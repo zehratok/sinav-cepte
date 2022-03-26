@@ -1,12 +1,40 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ScrollView, Image, TextInput, TouchableOpacity, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Image, TextInput, TouchableOpacity, Dimensions, Alert } from 'react-native';
 import { Link } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import axios from 'axios';
+const Kayit = (props) => {
+    const [adSoyad, setAdSoyad] = useState('');
+    const [mail, setMail] = useState('');
+    const [parola, setParola] = useState('');
+    const [parolaTekrar, setParolaTekrar] = useState('');
+    function handleSubmit() {
+        if (!adSoyad || !mail || !parola || !parolaTekrar) {
+            Alert.alert("HATA!", "Bilgiler boş bırakılamaz!");
+            return;
+        }
+        if (parolaTekrar != parola) {
+            Alert.alert("HATA!", "Parolayı kontrol ediniz.");
+            return;
+        }
+        if (parolaTekrar == parola && adSoyad && mail && parola && parolaTekrar) {
+            Alert.alert("Kayıt Başarılı!");
+        }
+        const kullanici = {
+            adSoyad: adSoyad,
+            mail: mail,
+            parola: parola,
+        };
+        // console.log(kullanici);
+        axios.post("http://10.55.184.98:3001/kaydol", kullanici )
+            .then(response => console.log(response))
+            .catch(error => console.log(error));
 
-const Kayit = () => {
-    
+        //props.navigation.navigate('Profil', { kullanici });
+    }
 
-    return ( 
+
+    return (
         <ScrollView style={styles.container}>
             <SafeAreaView style={styles.kayit}>
                 <Image
@@ -18,23 +46,27 @@ const Kayit = () => {
                         <TextInput
                             style={styles.input}
                             placeholder="Ad Soyad"
+                            onChangeText={setAdSoyad}
                         />
                         <TextInput
                             style={styles.input}
                             placeholder="E-posta adresi"
+                            onChangeText={setMail}
                         />
                         <TextInput
                             style={styles.input}
                             placeholder="Parola"
+                            onChangeText={setParola}
                         />
                         <TextInput
                             style={styles.inputSon}
                             placeholder="Parola Tekrar"
+                            onChangeText={setParolaTekrar}
                         />
                     </View>
                     <TouchableOpacity
                         style={styles.buton}
-                    // onPress={onPressKayit}
+                        onPress={handleSubmit}
                     >
                         <Text style={styles.butonYazi}>KAYDOL</Text>
                     </TouchableOpacity>
@@ -47,7 +79,7 @@ const Kayit = () => {
     )
 }
 
-export default Kayit
+export default Kayit;
 
 const styles = StyleSheet.create({
     container: {

@@ -45,12 +45,12 @@ const styles = StyleSheet.create({
         display: 'flex',
         flex: 1,
         backgroundColor: 'white',
-
     },
     hosgeldiniz: {
         flex: 1,
         justifyContent: 'center',
         alignContent: 'center',
+        marginTop: 50,
     },
     baslik: {
         marginLeft: 10,

@@ -5,6 +5,7 @@ import HosGeldiniz from './src/Components/Sayfalar/HosGeldiniz';
 import Kayit from './src/Components/Sayfalar/Kayit';
 import Giris from './src/Components/Sayfalar/Giris';
 import Parola from './src/Components/Sayfalar/Parola';
+import Profil from './src/Components/Sayfalar/Profil';
 
 
 const Stack = createNativeStackNavigator();
@@ -20,6 +21,7 @@ const App = () => {
         <Stack.Screen name="Kaydol" component={Kayit} />
         <Stack.Screen name="Giriş Yap" component={Giris} />
         <Stack.Screen name="Parolanı Sıfırla" component={Parola} />
+        <Stack.Screen name="Profil" component={Profil} />
       </Stack.Navigator>
     </NavigationContainer>
   )

@@ -1,45 +1,81 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ScrollView, Image, TextInput, TouchableOpacity, Dimensions, Alert } from 'react-native';
+import usePost from '../Hooks/usePost';
 import { Link } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import axios from 'axios';
+import {
+    ActivityIndicator,
+    Alert,
+    Dimensions,
+    Image,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
+} from 'react-native';
+
 const Kayit = (props) => {
+    const { data, loading, error, post } = usePost();
     const [adSoyad, setAdSoyad] = useState('');
     const [mail, setMail] = useState('');
     const [parola, setParola] = useState('');
     const [parolaTekrar, setParolaTekrar] = useState('');
     function handleSubmit() {
-        if (!adSoyad || !mail || !parola || !parolaTekrar) {
+        if (!adSoyad && !mail && !parola && !parolaTekrar) {
             Alert.alert("HATA!", "Bilgiler boş bırakılamaz!");
+            return;
+        }
+        if (!adSoyad) {
+            Alert.alert("HATA!", "Ad Soyad alanı boş bırakılamaz!");
+            return;
+        }
+        if (!mail) {
+            Alert.alert("HATA!", "E-posta adresi alanı boş bırakılamaz!");
+            return;
+        }
+        if (!parola) {
+            Alert.alert("HATA!", "Parola alanı boş bırakılamaz!");
             return;
         }
         if (parolaTekrar != parola) {
             Alert.alert("HATA!", "Parolayı kontrol ediniz.");
             return;
         }
-        if (parolaTekrar == parola && adSoyad && mail && parola && parolaTekrar) {
-            Alert.alert("Kayıt Başarılı!");
-        }
         const kullanici = {
             adSoyad: adSoyad,
             mail: mail,
             parola: parola,
         };
-        // console.log(kullanici);
-        axios.post("http://10.55.184.98:3001/kaydol", kullanici )
-            .then(response => console.log(response))
-            .catch(error => console.log(error));
-
-        //props.navigation.navigate('Profil', { kullanici });
+        post("http://10.55.184.62:3001/kaydol", kullanici);
+        console.log(data);
+        if (error) {
+            Alert.alert("Beklenmedik bir hata oluştu.", "Tekrar deneyiniz.");
+        }
+        if (null) {
+            Alert.prompt("Beklenmedik bir hata oluştu.");
+            return;
+        }
+        if (data == null) {
+            Alert.alert("Beklenmedik bir hata oluştu.", "Tekrar deneyiniz.");
+            return;
+        }
+        if (data.mesaj == "Çift kayıt hatası") {
+            Alert.alert("HATA!", "Bu e-posta adresi zaten mevcut.");
+            return;
+        }
+        if (data.mesaj == "Kayit işlemi başarılı") {
+            Alert.alert("Kayıt Başarılı!", "Giriş yapabilirsiniz.");
+            props.navigation.navigate('Giriş Yap');
+        }
     }
-
 
     return (
         <ScrollView style={styles.container}>
             <SafeAreaView style={styles.kayit}>
                 <Image
                     style={styles.resim}
-                    source={require('../../Resimler/kayit.png')}
+                    source={require('../Resimler/kayit.png')}
                 />
                 <View>
                     <View style={styles.form}>
@@ -67,8 +103,14 @@ const Kayit = (props) => {
                     <TouchableOpacity
                         style={styles.buton}
                         onPress={handleSubmit}
+                        loading={loading}
+                        disabled={loading}
                     >
-                        <Text style={styles.butonYazi}>KAYDOL</Text>
+                        {loading ? (
+                            <ActivityIndicator color='white' />
+                        ) : (
+                            <Text style={styles.butonYazi}>KAYDOL</Text>
+                        )}
                     </TouchableOpacity>
                 </View>
                 <Link to={{ screen: 'Giriş Yap' }} style={styles.link}>

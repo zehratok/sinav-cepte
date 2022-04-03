@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, ScrollView, Image, TextInput, TouchableOpacity, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Image, TextInput, TouchableOpacity, Dimensions, Alert } from 'react-native';
 import { Link } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -8,7 +8,7 @@ const Parola = (navigation) => {
         <ScrollView style={styles.container}>
             <SafeAreaView style={styles.parola}>
                 <Image
-                    source={require('../../Resimler/parola.png')}
+                    source={require('../Resimler/parola.png')}
                     style={styles.resim}
                 />
                 <View>
@@ -20,8 +20,9 @@ const Parola = (navigation) => {
                         />
                     </View>
                     <TouchableOpacity
+
                         style={styles.buton}
-                    // onPress={onPressGiris}
+                        onPress={() => Alert.alert('HATA!', '"Parolamı unuttum" şu anda kullanılamıyor.')}
                     >
                         <Text style={styles.butonYazi}>PAROLAMI UNUTTUM</Text>
                     </TouchableOpacity>

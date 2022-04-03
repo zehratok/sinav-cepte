@@ -1,29 +1,47 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HosGeldiniz from './src/Components/Sayfalar/HosGeldiniz';
-import Kayit from './src/Components/Sayfalar/Kayit';
-import Giris from './src/Components/Sayfalar/Giris';
-import Parola from './src/Components/Sayfalar/Parola';
-import Profil from './src/Components/Sayfalar/Profil';
-
+import HosGeldiniz from './src/Pages/HosGeldiniz';
+import Kayit from './src/Pages/Kayit';
+import Giris from './src/Pages/Giris';
+import Parola from './src/Pages/Parola';
+import Profil from './src/Pages/Profil';
+import { useSelector } from 'react-redux';
+import Loading from './src/Components/Loading';
 
 const Stack = createNativeStackNavigator();
 
-const App = () => {
+const Router = () => {
+  const userSession = useSelector(s => s.data);
+  const isAuthLoading = useSelector(s => s.isAuthLoading);
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          headerShown: false,
-        }}>
-        <Stack.Screen name="SINAV CEPTE" component={HosGeldiniz} />
-        <Stack.Screen name="Kaydol" component={Kayit} />
-        <Stack.Screen name="Giriş Yap" component={Giris} />
-        <Stack.Screen name="Parolanı Sıfırla" component={Parola} />
-        <Stack.Screen name="Profil" component={Profil} />
-      </Stack.Navigator>
-    </NavigationContainer>
+      {isAuthLoading ?
+        (
+          <Loading />
+        ) : !userSession ? (
+          <Stack.Navigator>
+            <Stack.Group screenOptions={{
+              headerShown: false,
+            }}>
+              <Stack.Screen name="SINAV CEPTE" component={HosGeldiniz} />
+              <Stack.Screen name="Kaydol" component={Kayit} />
+              <Stack.Screen name="Giriş Yap" component={Giris} />
+              <Stack.Screen name="Parolanı Sıfırla" component={Parola} />
+            </Stack.Group>
+          </Stack.Navigator>
+        ) : (
+          <Stack.Navigator>
+            <Stack.Group screenOptions={{
+              headerShown: false,
+            }}>
+            </Stack.Group>
+            <Stack.Group>
+              <Stack.Screen name="Profil" component={Profil} />
+            </Stack.Group>
+          </Stack.Navigator>
+        )}
+    </NavigationContainer >
   )
 }
-export default App;
+export default Router;

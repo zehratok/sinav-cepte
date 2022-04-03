@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Kayit from './Kayit';
 
 const HosGeldiniz = (props) => {
     function kayitRouter() {
@@ -13,10 +12,9 @@ const HosGeldiniz = (props) => {
     return (
         <ScrollView style={styles.container}>
             <SafeAreaView style={styles.hosgeldiniz}>
-                <Text style={styles.baslik}>Sınav Cepte'ye</Text>
                 <Text style={styles.baslik}>Hoş Geldiniz</Text>
                     <Image
-                        source={require('../../Resimler/hosgeldiniz.png')}
+                        source={require('../Resimler/hosgeldiniz.png')}
                         style={styles.resim}
                     />
                 <View style={styles.butonFlex}>
@@ -53,7 +51,7 @@ const styles = StyleSheet.create({
         marginTop: 50,
     },
     baslik: {
-        marginLeft: 10,
+        alignSelf: 'center',
         fontSize: 40,
         fontWeight: 'bold',
         color: '#BE9FE1',

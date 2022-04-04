@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import {
     Alert,
-    Dimensions,
-    Image,
     ScrollView,
-    StyleSheet,
     Text,
     TextInput,
     TouchableOpacity,
     View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Resim from '../Components/Resim';
+import Link from '../Components/Links';
 import { ActivityIndicator } from 'react-native-paper';
-import { Link } from '@react-navigation/native';
 import usePost from '../Hooks/usePost';
-import { useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux';
+
+import styles from '../Styles/Giris.style';
+import Buton from '../Components/Buton';
 
 const Giris = () => {
     const { data, loading, error, post } = usePost();
@@ -54,14 +55,11 @@ const Giris = () => {
             dispatch({ type: 'SET_USER', payload: { data } })
         }
     }
-
+    
     return (
         <ScrollView style={styles.container}>
             <SafeAreaView style={styles.giris}>
-                <Image
-                    source={require('../Resimler/giris.png')}
-                    style={styles.resim}
-                />
+                <Resim kaynak={require('../Resimler/giris.png')} />
                 <View>
                     <View style={styles.form}>
                         <TextInput
@@ -76,30 +74,12 @@ const Giris = () => {
                         />
                     </View >
                     <View style={styles.parolaLink}>
-                        <Link to={{ screen: 'Parolanı Sıfırla' }} style={styles.parolaLink}>
-                            Parolanı mı unuttun?
-                        </Link>
+                        <Link to={{ screen: 'Parolanı Sıfırla' }} text='Parolanı mı unuttun?' />
                     </View>
-                    <TouchableOpacity
-                        style={styles.buton}
-                        onPress={handleSubmit}
-                        loading={loading}
-                        disabled={loading}
-                    >
-                        {loading ? (
-                            <ActivityIndicator color='white' />
-                        ) : (
-                            <Text style={styles.butonYazi}>GİRİŞ YAP</Text>
-                        )}
-                    </TouchableOpacity>
-
+                    <Buton text='GİRİŞ YAP' onPress={handleSubmit} />
                 </View >
-                <View>
-                    <Link to={{ screen: 'Kaydol' }} style={styles.link}>
-                        Hesabın yok mu? Yeni bir hesap oluştur.
-                    </Link>
-
-                </View>
+                <Link to={{ screen: 'Kaydol' }}
+                    text=' Hesabın yok mu? Yeni bir hesap oluştur.' />
             </SafeAreaView >
         </ScrollView >
     )
@@ -107,71 +87,3 @@ const Giris = () => {
 
 export default Giris;
 
-const styles = StyleSheet.create({
-    container: {
-        display: 'flex',
-        flex: 1,
-        backgroundColor: 'white',
-    },
-    giris: {
-        display: 'flex',
-        flex: 1,
-        justifyContent: 'center',
-        backgroundColor: 'white',
-        alignItems: 'center',
-    },
-    resim: {
-        width: Dimensions.get('window').width / 1.5,
-        height: Dimensions.get('window').height / 3,
-        alignContent: 'center',
-    },
-    form: {
-        backgroundColor: 'white',
-        borderColor: '#F1F1F6',
-        borderWidth: 1,
-        borderRadius: 10,
-        marginBottom: 10,
-    },
-    input: {
-        height: 60,
-        width: 300,
-        borderWidth: 1,
-        borderBottomColor: '#F1F1F6',
-        padding: 10,
-        borderTopWidth: 0,
-        borderRightWidth: 0,
-        borderLeftWidth: 0,
-        fontSize: 17,
-    },
-    inputSon: {
-        height: 60,
-        width: 300,
-        padding: 10,
-        fontSize: 17,
-    },
-    parolaLink: {
-        alignItems: 'flex-end',
-        textAlign: 'right',
-        color: '#E1CCEC',
-        marginTop: 4,
-        marginBottom: 7,
-        fontSize: 13,
-    },
-    buton: {
-        backgroundColor: '#BE9FE1',
-        height: 50,
-        padding: 12,
-        alignItems: 'center',
-        marginTop: 10,
-        marginBottom: 10,
-        borderRadius: 10,
-    },
-    butonYazi: {
-        color: 'white',
-        fontSize: 17,
-    },
-    link: {
-        color: '#E1CCEC',
-        fontSize: 13,
-    },
-})

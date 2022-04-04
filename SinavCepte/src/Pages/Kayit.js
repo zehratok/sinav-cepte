@@ -1,19 +1,13 @@
 import React, { useState } from 'react';
-import usePost from '../Hooks/usePost';
-import { Link } from '@react-navigation/native';
+import { Alert, ScrollView, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import {
-    ActivityIndicator,
-    Alert,
-    Dimensions,
-    Image,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
-} from 'react-native';
+import usePost from '../Hooks/usePost';
+import Resim from '../Components/Resim';
+import Buton from '../Components/Buton';
+import Link from '../Components/Links';
+
+import styles from '../Styles/Kayit.style';
+
 
 const Kayit = (props) => {
     const { data, loading, error, post } = usePost();
@@ -21,6 +15,7 @@ const Kayit = (props) => {
     const [mail, setMail] = useState('');
     const [parola, setParola] = useState('');
     const [parolaTekrar, setParolaTekrar] = useState('');
+
     function handleSubmit() {
         if (!adSoyad && !mail && !parola && !parolaTekrar) {
             Alert.alert("HATA!", "Bilgiler boş bırakılamaz!");
@@ -73,10 +68,7 @@ const Kayit = (props) => {
     return (
         <ScrollView style={styles.container}>
             <SafeAreaView style={styles.kayit}>
-                <Image
-                    style={styles.resim}
-                    source={require('../Resimler/kayit.png')}
-                />
+                <Resim kaynak={require('../Resimler/kayit.png')} />
                 <View>
                     <View style={styles.form}>
                         <TextInput
@@ -100,86 +92,14 @@ const Kayit = (props) => {
                             onChangeText={setParolaTekrar}
                         />
                     </View>
-                    <TouchableOpacity
-                        style={styles.buton}
-                        onPress={handleSubmit}
-                        loading={loading}
-                        disabled={loading}
-                    >
-                        {loading ? (
-                            <ActivityIndicator color='white' />
-                        ) : (
-                            <Text style={styles.butonYazi}>KAYDOL</Text>
-                        )}
-                    </TouchableOpacity>
+                    <Buton text='KAYDOL' onPress={handleSubmit} loading={loading} />
                 </View>
-                <Link to={{ screen: 'Giriş Yap' }} style={styles.link}>
-                    Hesabın mı var? Giriş Yap.
-                </Link>
+                <Link to={{ screen: 'Giriş Yap' }}
+                    text="Hesabın mı var? Giriş Yap."
+                />
             </SafeAreaView>
-        </ScrollView>
+        </ScrollView >
     )
 }
 
 export default Kayit;
-
-const styles = StyleSheet.create({
-    container: {
-        display: 'flex',
-        flex: 1,
-        backgroundColor: 'white',
-    },
-    kayit: {
-        display: 'flex',
-        flex: 1,
-        justifyContent: 'center',
-        backgroundColor: 'white',
-        alignItems: 'center',
-    },
-    resim: {
-        width: Dimensions.get('window').width / 1.5,
-        height: Dimensions.get('window').height / 3,
-        alignContent: 'center',
-    },
-    form: {
-        backgroundColor: 'white',
-        borderColor: '#F1F1F6',
-        borderWidth: 1,
-        borderRadius: 10,
-        marginBottom: 10,
-    },
-    input: {
-        height: 60,
-        width: 300,
-        borderWidth: 1,
-        borderBottomColor: '#F1F1F6',
-        padding: 10,
-        borderTopWidth: 0,
-        borderRightWidth: 0,
-        borderLeftWidth: 0,
-        fontSize: 17,
-    },
-    inputSon: {
-        height: 60,
-        width: 300,
-        padding: 10,
-        fontSize: 17,
-    },
-    buton: {
-        backgroundColor: '#BE9FE1',
-        height: 50,
-        padding: 12,
-        alignItems: 'center',
-        marginTop: 10,
-        marginBottom: 10,
-        borderRadius: 10,
-    },
-    butonYazi: {
-        color: 'white',
-        fontSize: 17,
-    },
-    link: {
-        color: '#E1CCEC',
-        fontSize: 13,
-    },
-})

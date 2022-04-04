@@ -1,6 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity, Dimensions } from 'react-native';
+import { Text, View, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import ButonCift from '../Components/ButonCift';
+import Resim from '../Components/Resim';
+import styles from '../Styles/HosGeldiniz.style';
 
 const HosGeldiniz = (props) => {
     function kayitRouter() {
@@ -13,71 +16,14 @@ const HosGeldiniz = (props) => {
         <ScrollView style={styles.container}>
             <SafeAreaView style={styles.hosgeldiniz}>
                 <Text style={styles.baslik}>Hoş Geldiniz</Text>
-                    <Image
-                        source={require('../Resimler/hosgeldiniz.png')}
-                        style={styles.resim}
-                    />
-                <View style={styles.butonFlex}>
-                    <TouchableOpacity
-                        style={styles.buton}
-                        onPress={kayitRouter}
-                    >
-                        <Text style={styles.butonYazi}>KAYDOL</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        style={styles.buton}
-                        onPress={girisRouter}
-                    >
-                        <Text style={styles.butonYazi}>GİRİŞ YAP</Text>
-                    </TouchableOpacity>
+                <Resim kaynak={require('../Resimler/hosgeldiniz.png')} />
+                <View style={styles.buton}>
+                    <ButonCift text="KAYDOL" onPress={kayitRouter} />
+                    <ButonCift text="GİRİŞ YAP" onPress={girisRouter} />
                 </View>
             </SafeAreaView>
-        </ScrollView>
+        </ScrollView >
     )
 }
 
 export default HosGeldiniz;
-
-const styles = StyleSheet.create({
-    container: {
-        display: 'flex',
-        flex: 1,
-        backgroundColor: 'white',
-    },
-    hosgeldiniz: {
-        flex: 1,
-        justifyContent: 'center',
-        alignContent: 'center',
-        marginTop: 50,
-    },
-    baslik: {
-        alignSelf: 'center',
-        fontSize: 40,
-        fontWeight: 'bold',
-        color: '#BE9FE1',
-    },
-    resim: {
-        width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height / 2,
-        resizeMode: "contain",
-    },
-    butonFlex: {
-        marginTop: 50,
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-    },
-    buton: {
-        backgroundColor: '#BE9FE1',
-        width: 150,
-        height: 50,
-        padding: 12,
-        alignItems: 'center',
-        marginTop: 10,
-        marginBottom: 10,
-        borderRadius: 10,
-    },
-    butonYazi: {
-        color: 'white',
-        fontSize: 17,
-    },
-})

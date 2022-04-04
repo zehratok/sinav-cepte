@@ -1,90 +1,29 @@
 import React from 'react'
-import { StyleSheet, Text, View, ScrollView, Image, TextInput, TouchableOpacity, Dimensions, Alert } from 'react-native';
-import { Link } from '@react-navigation/native';
+import { Alert, ScrollView, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Resim from '../Components/Resim';
+import Buton from '../Components/Buton';
+import Link from '../Components/Links';
 
-const Parola = (navigation) => {
+import styles from '../Styles/Parola.style';
+
+const Parola = () => {
     return (
         <ScrollView style={styles.container}>
             <SafeAreaView style={styles.parola}>
-                <Image
-                    source={require('../Resimler/parola.png')}
-                    style={styles.resim}
-                />
+                <Resim kaynak={require('../Resimler/parola.png')} />
                 <View>
                     <View style={styles.form}>
-
                         <TextInput
                             style={styles.input}
                             placeholder="E-posta adresi"
                         />
                     </View>
-                    <TouchableOpacity
-
-                        style={styles.buton}
-                        onPress={() => Alert.alert('HATA!', '"Parolamı unuttum" şu anda kullanılamıyor.')}
-                    >
-                        <Text style={styles.butonYazi}>PAROLAMI UNUTTUM</Text>
-                    </TouchableOpacity>
-
+                    <Buton onPress={() => Alert.alert('HATA!', '"Parolamı unuttum" şu anda kullanılamıyor.')} text='PAROLAMI UNUTTUM' />
                 </View>
-                <View>
-                    <Link to={{ screen: 'Kaydol' }} style={styles.link}>
-                        Hesabın yok mu? Yeni bir hesap oluştur.
-                    </Link>
-                </View>
+                <Link to={{ screen: 'Kaydol' }} text='Hesabın yok mu? Yeni bir hesap oluştur.' />
             </SafeAreaView>
         </ScrollView>
     )
 }
 export default Parola;
-
-const styles = StyleSheet.create({
-    container: {
-        display: 'flex',
-        flex: 1,
-        backgroundColor: 'white',
-    },
-    parola: {
-        display: 'flex',
-        flex: 1,
-        justifyContent: 'center',
-        backgroundColor: 'white',
-        alignItems: 'center',
-    },
-    resim: {
-        width: Dimensions.get('window').width / 1.5,
-        height: Dimensions.get('window').height / 3.5,
-        alignContent: 'center',
-    },
-    form: {
-        backgroundColor: 'white',
-        borderColor: '#F1F1F6',
-        borderWidth: 1,
-        borderRadius: 10,
-        marginBottom: 10,
-    },
-    input: {
-        height: 60,
-        width: 300,
-        padding: 10,
-        fontSize: 17,
-    },
-    buton: {
-        backgroundColor: '#BE9FE1',
-        height: 50,
-        padding: 12,
-        alignItems: 'center',
-        marginTop: 10,
-        marginBottom: 10,
-        borderRadius: 10,
-    },
-    butonYazi: {
-        color: 'white',
-        fontSize: 17,
-    },
-    link: {
-        color: '#E1CCEC',
-        fontSize: 13,
-    },
-})

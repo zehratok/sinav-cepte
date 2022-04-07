@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Alert, ScrollView, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Formik } from 'formik';
 import usePost from '../Hooks/usePost';
 import Resim from '../Components/Resim';
 import Buton from '../Components/Buton';
@@ -11,12 +12,8 @@ import styles from '../Styles/Kayit.style';
 
 const Kayit = (props) => {
     const { data, loading, error, post } = usePost();
-    const [adSoyad, setAdSoyad] = useState('');
-    const [mail, setMail] = useState('');
-    const [parola, setParola] = useState('');
-    const [parolaTekrar, setParolaTekrar] = useState('');
 
-    function handleSubmit() {
+    function handleKayit() {
         if (!adSoyad && !mail && !parola && !parolaTekrar) {
             Alert.alert("HATA!", "Bilgiler boş bırakılamaz!");
             return;
@@ -69,31 +66,42 @@ const Kayit = (props) => {
         <ScrollView style={styles.container}>
             <SafeAreaView style={styles.kayit}>
                 <Resim kaynak={require('../Resimler/kayit.png')} />
-                <View>
-                    <View style={styles.form}>
-                        <TextInput
-                            style={styles.input}
-                            placeholder="Ad Soyad"
-                            onChangeText={setAdSoyad}
-                        />
-                        <TextInput
-                            style={styles.input}
-                            placeholder="E-posta adresi"
-                            onChangeText={setMail}
-                        />
-                        <TextInput
-                            style={styles.input}
-                            placeholder="Parola"
-                            onChangeText={setParola}
-                        />
-                        <TextInput
-                            style={styles.inputSon}
-                            placeholder="Parola Tekrar"
-                            onChangeText={setParolaTekrar}
-                        />
-                    </View>
-                    <Buton text='KAYDOL' onPress={handleSubmit} loading={loading} />
-                </View>
+                <Formik
+                    initialValues={{ adSoyad: '', mail: '', parola: '', parolaTekrar: '' }}
+                    onSubmit={handleKayit}
+                >
+                    {({ handleSubmit, handleChange, values }) => (
+                        <View>
+                            <View style={styles.form}>
+                                <TextInput
+                                    style={styles.input}
+                                    placeholder="Ad Soyad"
+                                    values={values.adSoyad}
+                                    onChangeText={handleChange('adSoyad')}
+                                />
+                                <TextInput
+                                    style={styles.input}
+                                    placeholder="E-posta adresi"
+                                    values={values.mail}
+                                    onChangeText={handleChange('mail')}
+                                />
+                                <TextInput
+                                    style={styles.input}
+                                    placeholder="Parola"
+                                    values={values.parola}
+                                    onChangeText={handleChange('parola')}
+                                />
+                                <TextInput
+                                    style={styles.inputSon}
+                                    placeholder="Parola Tekrar"
+                                    values={values.parolaTekrar}
+                                    onChangeText={handleChange('parolaTekrar')}
+                                />
+                            </View>
+                            <Buton text='KAYDOL' onPress={handleSubmit} />
+                        </View>
+                    )}
+                </Formik>
                 <Link to={{ screen: 'Giriş Yap' }}
                     text="Hesabın mı var? Giriş Yap."
                 />

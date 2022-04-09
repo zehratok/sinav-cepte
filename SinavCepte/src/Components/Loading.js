@@ -1,12 +1,21 @@
-import { View, Text } from 'react-native'
 import React from 'react'
-
-const Loading = () => {
-    return (
-        <View>
-            <Text>Loading</Text>
-        </View>
-    )
+import LottieView from 'lottie-react-native';
+class Loading extends React.Component {
+    componentDidMount() {
+         this.animation.play(0, 150);
+    }
+    resetAnimation = () => {
+        this.animation.reset();
+        this.animation.play();
+    }; render() {
+        return (
+            <LottieView
+                ref={animation => {
+                    this.animation = animation;
+                }}
+                source={require('../Assets/loading.json')} />
+        )
+    }
 }
 
 export default Loading

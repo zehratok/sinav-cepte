@@ -9,47 +9,29 @@ import Link from '../Components/Links';
 
 import styles from '../Styles/Kayit.style';
 
-
 const Kayit = (props) => {
     const { data, loading, error, post } = usePost();
+    function handleKayit(values) {
 
-    function handleKayit() {
-        if (!adSoyad && !mail && !parola && !parolaTekrar) {
-            Alert.alert("HATA!", "Bilgiler boş bırakılamaz!");
-            return;
-        }
-        if (!adSoyad) {
+        if (!values.adSoyad) {
             Alert.alert("HATA!", "Ad Soyad alanı boş bırakılamaz!");
             return;
         }
-        if (!mail) {
+        if (!values.mail) {
             Alert.alert("HATA!", "E-posta adresi alanı boş bırakılamaz!");
             return;
         }
-        if (!parola) {
+        if (!values.parola) {
             Alert.alert("HATA!", "Parola alanı boş bırakılamaz!");
             return;
         }
-        if (parolaTekrar != parola) {
+        if (values.parolaTekrar != values.parola) {
             Alert.alert("HATA!", "Parolayı kontrol ediniz.");
             return;
         }
-        const kullanici = {
-            adSoyad: adSoyad,
-            mail: mail,
-            parola: parola,
-        };
-        post("http://10.55.184.62:3001/kaydol", kullanici);
-        console.log(data);
-        if (error) {
-            Alert.alert("Beklenmedik bir hata oluştu.", "Tekrar deneyiniz.");
-        }
-        if (null) {
-            Alert.prompt("Beklenmedik bir hata oluştu.");
-            return;
-        }
-        if (data == null) {
-            Alert.alert("Beklenmedik bir hata oluştu.", "Tekrar deneyiniz.");
+        post("http://10.55.185.37:3001/kaydol", values);
+        if (error || data == null) {
+            Alert.alert("Beklenmedik bir hata oluştu.", "Tekrar deneyin.");
             return;
         }
         if (data.mesaj == "Çift kayıt hatası") {
@@ -61,7 +43,6 @@ const Kayit = (props) => {
             props.navigation.navigate('Giriş Yap');
         }
     }
-
     return (
         <ScrollView style={styles.container}>
             <SafeAreaView style={styles.kayit}>
@@ -69,6 +50,7 @@ const Kayit = (props) => {
                 <Formik
                     initialValues={{ adSoyad: '', mail: '', parola: '', parolaTekrar: '' }}
                     onSubmit={handleKayit}
+                    enableReinitialize={true}
                 >
                     {({ handleSubmit, handleChange, values }) => (
                         <View>
@@ -76,29 +58,33 @@ const Kayit = (props) => {
                                 <TextInput
                                     style={styles.input}
                                     placeholder="Ad Soyad"
-                                    values={values.adSoyad}
+                                    value={values.adSoyad}
                                     onChangeText={handleChange('adSoyad')}
                                 />
                                 <TextInput
                                     style={styles.input}
                                     placeholder="E-posta adresi"
-                                    values={values.mail}
+                                    value={values.mail}
                                     onChangeText={handleChange('mail')}
                                 />
                                 <TextInput
                                     style={styles.input}
                                     placeholder="Parola"
-                                    values={values.parola}
+                                    value={values.parola}
                                     onChangeText={handleChange('parola')}
+                                    secureTextEntry={true}
                                 />
                                 <TextInput
                                     style={styles.inputSon}
                                     placeholder="Parola Tekrar"
-                                    values={values.parolaTekrar}
+                                    value={values.parolaTekrar}
                                     onChangeText={handleChange('parolaTekrar')}
+                                    secureTextEntry={true}
                                 />
                             </View>
-                            <Buton text='KAYDOL' onPress={handleSubmit} />
+                            <Buton text='KAYDOL'
+                                onPress={handleSubmit}
+                                loading={loading} />
                         </View>
                     )}
                 </Formik>

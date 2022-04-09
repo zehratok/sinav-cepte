@@ -8,6 +8,7 @@ import Parola from './src/Pages/Parola';
 import Profil from './src/Pages/Profil';
 import { useSelector } from 'react-redux';
 import Loading from './src/Components/Loading';
+import AnaSayfa from './src/Pages/AnaSayfa';
 
 const Stack = createNativeStackNavigator();
 
@@ -35,6 +36,7 @@ const Router = () => {
             <Stack.Group screenOptions={{
               headerShown: false,
             }}>
+              <Stack.Screen name="Ana Sayfa" component={AnaSayfa} />
             </Stack.Group>
             <Stack.Group>
               <Stack.Screen name="Profil" component={Profil} />

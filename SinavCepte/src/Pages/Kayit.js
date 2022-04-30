@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Alert, ScrollView, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Formik } from 'formik';
@@ -10,7 +10,10 @@ import Link from '../Components/Links';
 import styles from '../Styles/Kayit.style';
 
 const Kayit = (props) => {
+
     const { data, loading, error, post } = usePost();
+
+
     function handleKayit(values) {
 
         if (!values.adSoyad) {
@@ -29,9 +32,13 @@ const Kayit = (props) => {
             Alert.alert("HATA!", "Parolayı kontrol ediniz.");
             return;
         }
-        post("http://10.55.185.37:3001/kaydol", values);
+        post("http://192.168.1.37:3001/kaydol", values);
+
+
+    }
+    useEffect(() => {
+        console.log(data);
         if (error || data == null) {
-            Alert.alert("Beklenmedik bir hata oluştu.", "Tekrar deneyin.");
             return;
         }
         if (data.mesaj == "Çift kayıt hatası") {
@@ -42,7 +49,8 @@ const Kayit = (props) => {
             Alert.alert("Kayıt Başarılı!", "Giriş yapabilirsiniz.");
             props.navigation.navigate('Giriş Yap');
         }
-    }
+    }, [data])
+
     return (
         <ScrollView style={styles.container}>
             <SafeAreaView style={styles.kayit}>

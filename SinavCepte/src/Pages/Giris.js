@@ -23,9 +23,14 @@ const Giris = () => {
             Alert.alert("HATA!", "Parola alanı boş bırakılamaz!");
             return;
         }
-        post("http://10.55.185.37:3001/giris-yap", values);
-
-        if (error || data == null) {
+        post("http://192.168.1.37:3001/giris-yap", values);
+    }
+    useEffect(() => {
+        console.log(data);
+        if (data == null) {
+            return;
+        }
+        if (error) {
             Alert.alert("Beklenmedik bir hata oluştu.", "Tekrar deneyin.");
             return;
         }
@@ -37,7 +42,7 @@ const Giris = () => {
             Alert.alert("HOŞ GELDİNİZ!", "Giriş Başarılı.")
             dispatch({ type: 'SET_USER', payload: { data } })
         }
-    }
+    }, [data])
 
     return (
         <ScrollView style={styles.container}>

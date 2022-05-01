@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import styles from '../Styles/Giris.style';
 import Buton from '../Components/Buton';
 import { Formik } from 'formik';
+import DurumCubugu from '../Components/DurumCubugu';
 
 const Giris = () => {
     const { data, loading, error, post } = usePost();
@@ -23,7 +24,7 @@ const Giris = () => {
             Alert.alert("HATA!", "Parola alanı boş bırakılamaz!");
             return;
         }
-        post("http://192.168.1.37:3001/giris-yap", values);
+        post("http://192.168.1.34:3001/giris-yap", values);
     }
     useEffect(() => {
         console.log(data);
@@ -47,6 +48,7 @@ const Giris = () => {
     return (
         <ScrollView style={styles.container}>
             <SafeAreaView style={styles.giris}>
+                <DurumCubugu />
                 <Resim kaynak={require('../Resimler/giris.png')} />
 
                 <Formik initialValues={{ mail: '', parola: '' }}

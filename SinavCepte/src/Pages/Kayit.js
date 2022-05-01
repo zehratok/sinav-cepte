@@ -8,6 +8,7 @@ import Buton from '../Components/Buton';
 import Link from '../Components/Links';
 
 import styles from '../Styles/Kayit.style';
+import DurumCubugu from '../Components/DurumCubugu';
 
 const Kayit = (props) => {
 
@@ -32,7 +33,7 @@ const Kayit = (props) => {
             Alert.alert("HATA!", "Parolayı kontrol ediniz.");
             return;
         }
-        post("http://192.168.1.37:3001/kaydol", values);
+        post("http://192.168.1.34:3001/kaydol", values);
 
 
     }
@@ -54,6 +55,7 @@ const Kayit = (props) => {
     return (
         <ScrollView style={styles.container}>
             <SafeAreaView style={styles.kayit}>
+                <DurumCubugu />
                 <Resim kaynak={require('../Resimler/kayit.png')} />
                 <Formik
                     initialValues={{ adSoyad: '', mail: '', parola: '', parolaTekrar: '' }}

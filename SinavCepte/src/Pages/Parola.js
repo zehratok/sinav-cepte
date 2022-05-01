@@ -6,11 +6,13 @@ import Buton from '../Components/Buton';
 import Link from '../Components/Links';
 
 import styles from '../Styles/Parola.style';
+import DurumCubugu from '../Components/DurumCubugu';
 
 const Parola = () => {
     return (
         <ScrollView style={styles.container}>
             <SafeAreaView style={styles.parola}>
+                <DurumCubugu />
                 <Resim kaynak={require('../Resimler/parola.png')} />
                 <View>
                     <View style={styles.form}>

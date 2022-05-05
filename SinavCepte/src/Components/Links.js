@@ -16,7 +16,7 @@ export default Links;
 const styles = StyleSheet.create({
     link: {
         color: '#E1CCEC',
-        fontSize: 13,
+        fontSize:  Dimensions.get('window').width /33,
         margin: Dimensions.get('window').height/75,
     },
 })

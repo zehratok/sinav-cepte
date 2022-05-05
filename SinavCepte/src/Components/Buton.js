@@ -28,11 +28,11 @@ const styles = StyleSheet.create({
         marginTop: Dimensions.get('window').height / 50,
         marginBottom: Dimensions.get('window').height / 50,
         height: Dimensions.get('window').height / 14,
-        padding: 13,
+        padding: Dimensions.get('window').height / 56,
     },
     yazi: {
         color: 'white',
-        fontSize: 17,
+        fontSize:  Dimensions.get('window').width /25,
     },
 
 })

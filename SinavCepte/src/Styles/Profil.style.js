@@ -7,7 +7,7 @@ export default StyleSheet.create({
     },
     baslik: {
         alignSelf: 'center',
-        fontSize: Dimensions.get('window').height/ 40,
+        fontSize: Dimensions.get('window').width/20,
         fontWeight: 'bold',
         color: '#BE9FE1',
     },

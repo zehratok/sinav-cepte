@@ -13,13 +13,13 @@ import Giris from './src/Pages/Giris';
 import Parola from './src/Pages/Parola';
 import Profil from './src/Pages/Profil';
 import AnaSayfa from './src/Pages/AnaSayfa';
-import Sayfa1 from './src/Pages/Sayfa1';
-import Sayfa2 from './src/Pages/Sayfa2';
+import Ayarlar from './src/Pages/Ayarlar';
+import Notlarim from './src/Pages/Notlarim';
 import Header from './src/Components/Header';
-import Sayfa3 from './src/Pages/Sayfa3';
-import Sayfa4 from './src/Pages/Sayfa4';
-import Sayfa5 from './src/Pages/Sayfa5';
-
+import Gorevlerim from './src/Pages/Gorevlerim';
+import CikmisSorular from './src/Pages/CikmisSorular';
+import Konular from './src/Pages/Konular';
+import Deneme from './src/Pages/Deneme';
 const Drawer = createDrawerNavigator();
 
 const Router = () => {
@@ -55,53 +55,56 @@ const Router = () => {
               }
             }}
           >
-            {
-              DrawerItems.map(drawer => <Drawer.Screen
-                name={drawer.name}
-                key={drawer.name}
-                options={{
-                  header: ({ navigation, route, options, back }) => {
-                    const title = getHeaderTitle(options, route.name);
-                    return (
-                      <Header
-                        screen={title}
-                        style={options.headerStyle}
-                      />
-                    );
-                  },
-                  drawerIcon: ({ focused }) =>
-                    drawer.iconType === 'Material' ?
-                      <MaterialCommunityIcons
-                        name={drawer.iconName}
-                        size={30}
-                        color={focused ? "#F1F1F6" : "#BE9FE1"}
-                      />
-                      :
-                      drawer.iconType === 'Feather' ?
-                        <Feather
+            <Drawer.Group>
+              {
+                DrawerItems.map(drawer => <Drawer.Screen
+                  name={drawer.name}
+                  key={drawer.name}
+                  options={{
+                    header: ({ navigation, route, options, back }) => {
+                      const title = getHeaderTitle(options, route.name);
+                      return (
+                        <Header
+                          screen={title}
+                          style={options.headerStyle}
+                        />
+                      );
+                    },
+                    drawerIcon: ({ focused }) =>
+                      drawer.iconType === 'Material' ?
+                        <MaterialCommunityIcons
                           name={drawer.iconName}
                           size={30}
                           color={focused ? "#F1F1F6" : "#BE9FE1"}
                         />
                         :
-                        <FontAwesome5
-                          name={drawer.iconName}
-                          size={30}
-                          color={focused ? "#F1F1F6" : "#BE9FE1"}
-                        />
-                  ,
-                  headerShown: true,
-                }}
-                component={
-                  drawer.name === 'Profil' ? Profil
-                    : drawer.name === 'Ayarlar' ? Sayfa1
-                      : drawer.name === 'Notlarım' ? Sayfa2
-                        : drawer.name === 'Görevlerim' ? Sayfa3
-                          : drawer.name === 'Çıkmış Sorular' ? Sayfa4
-                            : drawer.name === 'Konular' ? Sayfa5
-                              : AnaSayfa
-                } />)
-            }
+                        drawer.iconType === 'Feather' ?
+                          <Feather
+                            name={drawer.iconName}
+                            size={30}
+                            color={focused ? "#F1F1F6" : "#BE9FE1"}
+                          />
+                          :
+                          <FontAwesome5
+                            name={drawer.iconName}
+                            size={30}
+                            color={focused ? "#F1F1F6" : "#BE9FE1"}
+                          />
+                    ,
+                    headerShown: true,
+                  }}
+                  component={
+                    drawer.name === 'Profil' ? Profil
+                      : drawer.name === 'Ayarlar' ? Ayarlar
+                        : drawer.name === 'Notlarım' ? Notlarim
+                          : drawer.name === 'Görevlerim' ? Gorevlerim
+                            : drawer.name === 'Çıkmış Sorular' ? CikmisSorular
+                              : drawer.name === 'Konular' ? Konular
+                                : AnaSayfa
+                  } />)
+              }
+            </Drawer.Group>
+          
           </Drawer.Navigator>
         )}
     </NavigationContainer >

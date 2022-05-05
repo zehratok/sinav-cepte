@@ -1,14 +1,13 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const Sayfa3 = () => {
+const Deneme = () => {
   return (
     <View>
-      <Text>Sayfa3</Text>
+      <Text>Deneme</Text>
     </View>
   )
 }
 
-export default Sayfa3
+export default Deneme
 
-const styles = StyleSheet.create({})

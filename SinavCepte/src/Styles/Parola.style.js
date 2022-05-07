@@ -25,6 +25,8 @@ export default StyleSheet.create({
         width: 300,
         padding: 10,
         fontSize: 17,
+        fontFamily: 'Ubuntu_400Regular',
+        color:'grey',
     },
    
 })

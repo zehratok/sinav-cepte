@@ -5,7 +5,7 @@ import Resim from '../Components/Resim';
 import Link from '../Components/Links';
 import usePost from '../Hooks/usePost';
 import { useDispatch } from 'react-redux';
-
+import Font from '../Components/Font';
 import styles from '../Styles/Giris.style';
 import Buton from '../Components/Buton';
 import { Formik } from 'formik';
@@ -48,6 +48,7 @@ const Giris = () => {
     return (
         <ScrollView style={styles.container}>
             <SafeAreaView style={styles.giris}>
+                <Font />
                 <DurumCubugu />
                 <Resim kaynak={require('../Resimler/giris.png')} />
 

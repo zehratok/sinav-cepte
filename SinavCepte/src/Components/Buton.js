@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, TouchableOpacity, Text, Dimensions } from 'react-native'
 import { ActivityIndicator } from 'react-native-paper';
-
+import Font from './Font';
 const Buton = ({ text, loading, onPress }) => {
     return (
         <TouchableOpacity
@@ -10,6 +10,7 @@ const Buton = ({ text, loading, onPress }) => {
             loading={loading}
             disabled={loading}
         >
+            <Font />
             {loading ? (
                 <ActivityIndicator color='white' />
             ) : (
@@ -28,11 +29,12 @@ const styles = StyleSheet.create({
         marginTop: Dimensions.get('window').height / 50,
         marginBottom: Dimensions.get('window').height / 50,
         height: Dimensions.get('window').height / 14,
-        padding: Dimensions.get('window').height / 56,
+        padding: Dimensions.get('window').height / 50,
     },
     yazi: {
         color: 'white',
-        fontSize:  Dimensions.get('window').width /25,
+        fontSize: Dimensions.get('window').width / 25,
+        fontFamily: 'Ubuntu_500Medium',
     },
 
 })

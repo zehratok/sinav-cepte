@@ -29,12 +29,16 @@ export default StyleSheet.create({
         borderRightWidth: 0,
         borderLeftWidth: 0,
         fontSize: 17,
+        fontFamily:'Ubuntu_400Regular',
+        color:'grey',
     },
     inputSon: {
         height: 60,
         width: 300,
         padding: 10,
         fontSize: 17,
+        fontFamily:'Ubuntu_400Regular',
+        color:'grey',
     },
     parolaLink: {
         alignItems: 'flex-end',

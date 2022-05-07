@@ -15,10 +15,10 @@ export default StyleSheet.create({
     },
     baslik: {
         alignSelf: 'center',
-        fontSize: 40,
-        fontWeight: 'bold',
-        color: '#BE9FE1',
         marginBottom: Dimensions.get('window').height / 15,
+        fontSize: 40,
+        fontFamily: 'Ubuntu_700Bold_Italic',
+        color: '#BE9FE1',
     },
     buton: {
         marginTop: Dimensions.get('window').height / 15,

@@ -6,7 +6,7 @@ const DurumCubugu = () => {
     return (
         <SafeAreaView>
             <StatusBar animated={true}
-                backgroundColor="#F1F1F6"
+                backgroundColor="#dcdce3"
                 barStyle='default'
                 showHideTransition='slide'
             />

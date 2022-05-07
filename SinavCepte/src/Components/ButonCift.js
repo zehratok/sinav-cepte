@@ -1,10 +1,13 @@
 import React from 'react'
 import { StyleSheet, TouchableOpacity, Text, Dimensions } from 'react-native'
+import Font from './Font';
 
 const ButonCift = ({ text, onPress }) => {
 
     return (
         <TouchableOpacity style={styles.buton} onPress={onPress} >
+
+            <Font />
             <Text style={styles.yazi}>{text}</Text>
         </TouchableOpacity >
     )
@@ -17,14 +20,15 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#BE9FE1',
         alignItems: 'center',
-        padding: Dimensions.get('window').height / 56,
+        padding: 12,
         borderRadius: 10,
-        margin:Dimensions.get('window').width/28,
+        margin: Dimensions.get('window').width / 28,
 
     },
     yazi: {
         color: 'white',
-        fontSize:  Dimensions.get('window').width /24,
+        fontSize: 17,
+        fontFamily:'Ubuntu_500Medium'
     },
 
 })

@@ -6,7 +6,7 @@ import usePost from '../Hooks/usePost';
 import Resim from '../Components/Resim';
 import Buton from '../Components/Buton';
 import Link from '../Components/Links';
-
+import Font from '../Components/Font'
 import styles from '../Styles/Kayit.style';
 import DurumCubugu from '../Components/DurumCubugu';
 
@@ -55,6 +55,7 @@ const Kayit = (props) => {
     return (
         <ScrollView style={styles.container}>
             <SafeAreaView style={styles.kayit}>
+                <Font />
                 <DurumCubugu />
                 <Resim kaynak={require('../Resimler/kayit.png')} />
                 <Formik

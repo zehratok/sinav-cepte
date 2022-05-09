@@ -2,31 +2,43 @@ export default [
     {
         name: 'Ana Sayfa',
         component: 'AnaSayfa',
-        iconType: 'Material',
+        iconType: 'MaterialCommunity',
         iconName: 'home'
     },
     {
         name: 'Notlarım',
         component: 'Sayfa2',
-        iconType: 'Material',
+        iconType: 'MaterialCommunity',
         iconName: 'notebook'
     },
     {
         name: 'Görevlerim',
         component: 'Sayfa3',
-        iconType: 'Material',
+        iconType: 'MaterialCommunity',
         iconName: 'calendar-clock'
+    },
+    {
+        name: 'Soru Paylaşımı',
+        component: 'Sayfa3',
+        iconType: 'MaterialCommunity',
+        iconName: 'sign-text'
+    },
+    {
+        name: 'Sohbet',
+        component: 'Sayfa3',
+        iconType: 'MaterialCommunity',
+        iconName: 'comment-text-multiple'
     },
     {
         name: 'Konular',
         component: 'Sayfa5',
-        iconType: 'FontAwesome5',
-        iconName: 'book'
+        iconType: 'MaterialCommunity',
+        iconName: 'book-alphabet'
     },
     {
         name: 'Çıkmış Sorular',
         component: 'Sayfa4',
-        iconType: 'Material',
+        iconType: 'MaterialCommunity',
         iconName: 'lead-pencil'
     },
     {

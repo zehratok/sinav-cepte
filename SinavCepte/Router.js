@@ -4,43 +4,58 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { useSelector } from 'react-redux';
 import { getHeaderTitle } from '@react-navigation/elements';
 import { MaterialCommunityIcons, Feather, FontAwesome5 } from '@expo/vector-icons';
-
 import DrawerItems from './src/Constants/DrawerItems';
 import Loading from './src/Components/Loading';
-import HosGeldiniz from './src/Pages/HosGeldiniz';
-import Kayit from './src/Pages/Kayit';
-import Giris from './src/Pages/Giris';
-import Parola from './src/Pages/Parola';
-import Profil from './src/Pages/Profil';
+import Header from './src/Components/Header';
+import Baslangic from './src/navigation/Baslangic';
 import AnaSayfa from './src/Pages/AnaSayfa';
+import Profil from './src/Pages/Profil';
 import Ayarlar from './src/Pages/Ayarlar';
 import Notlarim from './src/Pages/Notlarim';
-import Header from './src/Components/Header';
 import Gorevlerim from './src/Pages/Gorevlerim';
-import CikmisSorular from './src/Pages/CikmisSorular';
+import SoruPaylasimi from './src/Pages/SoruPaylasimi';
+import Sohbet from './src/Pages/Sohbet';
 import Konular from './src/Pages/Konular';
-import Deneme from './src/Pages/Deneme';
+import CikmisSorular from './src/Pages/CikmisSorular';
+import {
+  useFonts,
+  Ubuntu_300Light,
+  Ubuntu_300Light_Italic,
+  Ubuntu_400Regular,
+  Ubuntu_400Regular_Italic,
+  Ubuntu_500Medium,
+  Ubuntu_500Medium_Italic,
+  Ubuntu_700Bold,
+  Ubuntu_700Bold_Italic,
+} from '@expo-google-fonts/ubuntu';
+
 const Drawer = createDrawerNavigator();
 
 const Router = () => {
   const userSession = useSelector(s => s.data);
   const isAuthLoading = useSelector(s => s.isAuthLoading);
+
+  let [fontsLoaded] = useFonts({
+    Ubuntu_300Light,
+    Ubuntu_300Light_Italic,
+    Ubuntu_400Regular,
+    Ubuntu_400Regular_Italic,
+    Ubuntu_500Medium,
+    Ubuntu_500Medium_Italic,
+    Ubuntu_700Bold,
+    Ubuntu_700Bold_Italic,
+  });
+
+  if (!fontsLoaded) {
+    return <Loading />;
+  }
   return (
     <NavigationContainer>
       {isAuthLoading ?
         (
           <Loading />
         ) : !userSession ? (
-          <Drawer.Navigator>
-            <Drawer.Group screenOptions={{
-              headerShown: false,
-            }}>
-              <Drawer.Screen name="SINAV CEPTE" component={HosGeldiniz} />
-              <Drawer.Screen name="Kaydol" component={Kayit} />
-              <Drawer.Screen name="Giriş Yap" component={Giris} />
-              <Drawer.Screen name="Parolanı Sıfırla" component={Parola} />
-            </Drawer.Group>
-          </Drawer.Navigator>
+          <Baslangic />
         ) : (
           <Drawer.Navigator
             drawerType="front"
@@ -71,25 +86,32 @@ const Router = () => {
                       );
                     },
                     drawerIcon: ({ focused }) =>
-                      drawer.iconType === 'Material' ?
+                      drawer.iconType === 'MaterialCommunity' ?
                         <MaterialCommunityIcons
                           name={drawer.iconName}
                           size={30}
                           color={focused ? "#F1F1F6" : "#BE9FE1"}
                         />
                         :
-                        drawer.iconType === 'Feather' ?
-                          <Feather
+                        drawer.iconType === 'Material' ?
+                          <MaterialIcon
                             name={drawer.iconName}
                             size={30}
                             color={focused ? "#F1F1F6" : "#BE9FE1"}
                           />
                           :
-                          <FontAwesome5
-                            name={drawer.iconName}
-                            size={30}
-                            color={focused ? "#F1F1F6" : "#BE9FE1"}
-                          />
+                          drawer.iconType === 'Feather' ?
+                            <Feather
+                              name={drawer.iconName}
+                              size={30}
+                              color={focused ? "#F1F1F6" : "#BE9FE1"}
+                            />
+                            :
+                            <FontAwesome5
+                              name={drawer.iconName}
+                              size={30}
+                              color={focused ? "#F1F1F6" : "#BE9FE1"}
+                            />
                     ,
                     headerShown: true,
                   }}
@@ -98,13 +120,15 @@ const Router = () => {
                       : drawer.name === 'Ayarlar' ? Ayarlar
                         : drawer.name === 'Notlarım' ? Notlarim
                           : drawer.name === 'Görevlerim' ? Gorevlerim
-                            : drawer.name === 'Çıkmış Sorular' ? CikmisSorular
-                              : drawer.name === 'Konular' ? Konular
-                                : AnaSayfa
+                            : drawer.name === 'Soru Paylaşımı' ? SoruPaylasimi
+                              : drawer.name === 'Sohbet' ? Sohbet
+                                : drawer.name === 'Konular' ? Konular
+                                  : drawer.name === 'Çıkmış Sorular' ? CikmisSorular
+                                    : AnaSayfa
                   } />)
               }
             </Drawer.Group>
-          
+
           </Drawer.Navigator>
         )}
     </NavigationContainer >

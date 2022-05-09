@@ -41,17 +41,5 @@ export default [
         iconType: 'MaterialCommunity',
         iconName: 'lead-pencil'
     },
-    {
-        name: 'Profil',
-        component: 'Profil',
-        iconType: 'FontAwesome5',
-        iconName: 'user-circle'
-    },
-    {
-        name: 'Ayarlar',
-        component: 'Sayfa1',
-        iconType: 'Feather',
-        iconName: 'settings'
-    },
 
 ]

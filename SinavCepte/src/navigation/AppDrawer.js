@@ -13,83 +13,108 @@ import Sohbet from '../Pages/Sohbet';
 import Konular from '../Pages/Konular';
 import Ayarlar from '../Pages/Ayarlar';
 import Header from '../Components/Header';
+import CustomDrawer from '../Components/DrawerComponents/CustomDrawer';
+import Loading from '../Components/Loading';
+import {
+  useFonts,
+  Ubuntu_300Light,
+  Ubuntu_300Light_Italic,
+  Ubuntu_400Regular,
+  Ubuntu_400Regular_Italic,
+  Ubuntu_500Medium,
+  Ubuntu_500Medium_Italic,
+  Ubuntu_700Bold,
+  Ubuntu_700Bold_Italic,
+} from '@expo-google-fonts/ubuntu';
 
 const Drawer = createDrawerNavigator();
 
 const AppDrawer = () => {
+  let [fontsLoaded] = useFonts({
+    Ubuntu_300Light,
+    Ubuntu_300Light_Italic,
+    Ubuntu_400Regular,
+    Ubuntu_400Regular_Italic,
+    Ubuntu_500Medium,
+    Ubuntu_500Medium_Italic,
+    Ubuntu_700Bold,
+    Ubuntu_700Bold_Italic,
+  });
+
+  if (!fontsLoaded) {
+    return <Loading />;
+  }
   return (
-      <Drawer.Navigator
-        drawerType="front"
-        initialRouteName="AnaSayfa"
-        screenOptions={{
-          drawerActiveBackgroundColor: '#BE9FE1',
-          drawerActiveTintColor: '#F1F1F6',
-          drawerInactiveTintColor: '#BE9FE1',
-          drawerItemStyle: {
-            padding: 3,
-            borderRadius: 10,
-          }
-        }}
-      >
-        <Drawer.Group>
-          {
-            DrawerItems.map(drawer => <Drawer.Screen
-              name={drawer.name}
-              key={drawer.name}
-              options={{
-                header: ({ navigation, route, options, back }) => {
-                  const title = getHeaderTitle(options, route.name);
-                  return (
-                    <Header
-                      screen={title}
-                      style={options.headerStyle}
-                    />
-                  );
-                },
-                drawerIcon: ({ focused }) =>
-                  drawer.iconType === 'MaterialCommunity' ?
-                    <MaterialCommunityIcons
+    <Drawer.Navigator
+      drawerContent={props => <CustomDrawer {...props} />}
+      drawerType="front"
+      initialRouteName="AnaSayfa"
+      screenOptions={{
+        headerShown: true,
+        drawerActiveBackgroundColor: "#BE9FE1",
+        drawerActiveTintColor: "#F1F1F6",
+        drawerInactiveTintColor: "#BE9FE1",
+        drawerLabelStyle: {
+          marginLeft: -20,
+          fontFamily: 'Ubuntu_500Medium',
+          fontSize: 15,
+        }
+      }}
+    >
+      {
+        DrawerItems.map(drawer => <Drawer.Screen
+          name={drawer.name}
+          key={drawer.name}
+          options={{
+            header: ({ navigation, route, options, back }) => {
+              const title = getHeaderTitle(options, route.name);
+              return (
+                <Header
+                  screen={title}
+                  style={options.headerStyle}
+                />
+              );
+            },
+            drawerIcon: ({ focused }) =>
+              drawer.iconType === 'MaterialCommunity' ?
+                <MaterialCommunityIcons
+                  name={drawer.iconName}
+                  size={focused ? 35 : 25}
+                  color={focused ? "#F1F1F6" : "#BE9FE1"}
+                />
+                :
+                drawer.iconType === 'Material' ?
+                  <MaterialIcon
+                    name={drawer.iconName}
+                    size={focused ? 30 : 25}
+                    color={focused ? "#F1F1F6" : "#BE9FE1"}
+                  />
+                  :
+                  drawer.iconType === 'Feather' ?
+                    <Feather
                       name={drawer.iconName}
-                      size={30}
+                      size={focused ? 30 : 25}
                       color={focused ? "#F1F1F6" : "#BE9FE1"}
                     />
                     :
-                    drawer.iconType === 'Material' ?
-                      <MaterialIcon
-                        name={drawer.iconName}
-                        size={30}
-                        color={focused ? "#F1F1F6" : "#BE9FE1"}
-                      />
-                      :
-                      drawer.iconType === 'Feather' ?
-                        <Feather
-                          name={drawer.iconName}
-                          size={30}
-                          color={focused ? "#F1F1F6" : "#BE9FE1"}
-                        />
-                        :
-                        <FontAwesome5
-                          name={drawer.iconName}
-                          size={30}
-                          color={focused ? "#F1F1F6" : "#BE9FE1"}
-                        />
-                ,
-                headerShown: true,
-              }}
-              component={
-                drawer.name === 'Profil' ? Profil
-                  : drawer.name === 'Ayarlar' ? Ayarlar
-                    : drawer.name === 'Notlarım' ? Notlarim
-                      : drawer.name === 'Görevlerim' ? Gorevlerim
-                        : drawer.name === 'Soru Paylaşımı' ? SoruPaylasimi
-                          : drawer.name === 'Sohbet' ? Sohbet
-                            : drawer.name === 'Konular' ? Konular
-                              : drawer.name === 'Çıkmış Sorular' ? CikmisSorular
-                                : AnaSayfa
-              } />)
-          }
-        </Drawer.Group>
-      </Drawer.Navigator>
+                    <FontAwesome5
+                      name={drawer.iconName}
+                      size={focused ? 30 : 25}
+                      color={focused ? "#F1F1F6" : "#BE9FE1"}
+                    />
+
+          }}
+          component={
+            drawer.name === 'Notlarım' ? Notlarim
+              : drawer.name === 'Görevlerim' ? Gorevlerim
+                : drawer.name === 'Soru Paylaşımı' ? SoruPaylasimi
+                  : drawer.name === 'Sohbet' ? Sohbet
+                    : drawer.name === 'Konular' ? Konular
+                      : drawer.name === 'Çıkmış Sorular' ? CikmisSorular
+                        : AnaSayfa
+          } />)
+      }
+    </Drawer.Navigator>
   )
 }
 

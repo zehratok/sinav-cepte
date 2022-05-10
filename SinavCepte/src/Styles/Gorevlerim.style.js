@@ -3,6 +3,8 @@ export default StyleSheet.create({
     container: {
         display: 'flex',
         flex: 1,
+        backgroundColor:'white'
+
     },
     deneme:{
         flex: 1,

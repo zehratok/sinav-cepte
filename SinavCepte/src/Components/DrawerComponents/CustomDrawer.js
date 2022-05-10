@@ -9,7 +9,7 @@ const CustomDrawer = (props) => {
 
 
     return (
-        <View style={{ flex: 1, backgroundColor: '#e9e9f2' }}>
+        <View style={{ flex: 1, backgroundColor: 'white' }}>
             <Font />
             <ProfilDrawer />
             <DrawerContentScrollView {...props}
@@ -27,7 +27,6 @@ export default CustomDrawer;
 const styles = StyleSheet.create({
 
     contentContainer: {
-        backgroundColor: '#e9e9f2',
         fontFamily: 'Ubuntu_500Medium',
     }
 })

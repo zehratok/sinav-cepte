@@ -1,63 +1,63 @@
 import { Dimensions, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Entypo, MaterialCommunityIcons, SimpleLineIcons } from '@expo/vector-icons';
-import Loading from './Loading';
-import {
-    useFonts,
-    Ubuntu_300Light,
-    Ubuntu_300Light_Italic,
-    Ubuntu_400Regular,
-    Ubuntu_400Regular_Italic,
-    Ubuntu_500Medium,
-    Ubuntu_500Medium_Italic,
-    Ubuntu_700Bold,
-    Ubuntu_700Bold_Italic,
-} from '@expo-google-fonts/ubuntu';
-const Header = ({ screen }) => {
-    const navigation = useNavigation();
-    let [fontsLoaded] = useFonts({
-        Ubuntu_500Medium,
-    });
-    if (!fontsLoaded) {
-        return <Loading />;
-    }
-    return (
-        <View style={headerStyles.container}>
-            <TouchableOpacity style={headerStyles.icon} onPress={() => navigation.toggleDrawer()}>
-                <MaterialCommunityIcons name="death-star-variant" size={35} color="#BE9FE1" />
-            </TouchableOpacity>
-            <View>
-                <Text style={headerStyles.text}>{screen}</Text>
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import Font from './Font';
+import LottieView from 'lottie-react-native';
+
+class Header extends React.Component {
+    render() {
+        const { navigation } = this.props;
+        return (
+            <View style={headerStyles.container}>
+                <Font />
+                <TouchableWithoutFeedback
+                    style={headerStyles.icon}
+                    onPress={() => {
+                        this.play_btn.play(),
+                            navigation.toggleDrawer()
+                    }}
+                >
+                    <LottieView
+                        style={headerStyles.lottie}
+                        ref={animation => {
+                            this.play_btn = animation;
+                        }}
+                        source={require('../Assets/menu.json')}
+                        loop={false} />
+                </TouchableWithoutFeedback>
+                <View>
+                    <Text style={headerStyles.baslik}>  {this.props.baslik} </Text>
+                </View>
             </View>
-        </View>
-    )
+        )
+    }
 }
 
-export default Header;
+export default function (props) {
+    const navigation = useNavigation();
+
+    return <Header {...props} navigation={navigation} />;
+}
 
 const headerStyles = StyleSheet.create({
     container: {
-        position: 'relative',
-        top: 24,
-        left: 0,
-        width: '100%',
-        backgroundColor: '#e9e9f2',
-        height: 50,
         display: 'flex',
         flexDirection: 'row',
+        backgroundColor: 'white',
         paddingHorizontal: 15,
-        alignItems: 'center',
+        marginTop: 8
     },
-    icon: {
-        flexDirection: 'row'
-    },
-    text: {
+    baslik: {
         left: 5,
         color: '#BE9FE1',
-        fontSize: 20,
+        fontSize: 25,
         fontFamily: 'Ubuntu_500Medium',
-        bottom: 1,
-    }
+        marginTop: 9,
+    },
+    lottie: {
+        padding: Dimensions.get('window').width / 120,
+        width: 35,
+        height: 35
+    },
 })

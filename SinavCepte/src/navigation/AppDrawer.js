@@ -17,28 +17,14 @@ import CustomDrawer from '../Components/DrawerComponents/CustomDrawer';
 import Loading from '../Components/Loading';
 import {
   useFonts,
-  Ubuntu_300Light,
-  Ubuntu_300Light_Italic,
-  Ubuntu_400Regular,
-  Ubuntu_400Regular_Italic,
   Ubuntu_500Medium,
-  Ubuntu_500Medium_Italic,
-  Ubuntu_700Bold,
-  Ubuntu_700Bold_Italic,
 } from '@expo-google-fonts/ubuntu';
 
 const Drawer = createDrawerNavigator();
 
 const AppDrawer = () => {
   let [fontsLoaded] = useFonts({
-    Ubuntu_300Light,
-    Ubuntu_300Light_Italic,
-    Ubuntu_400Regular,
-    Ubuntu_400Regular_Italic,
     Ubuntu_500Medium,
-    Ubuntu_500Medium_Italic,
-    Ubuntu_700Bold,
-    Ubuntu_700Bold_Italic,
   });
 
   if (!fontsLoaded) {
@@ -50,7 +36,7 @@ const AppDrawer = () => {
       drawerType="front"
       initialRouteName="AnaSayfa"
       screenOptions={{
-        headerShown: true,
+        headerShown: false,
         drawerActiveBackgroundColor: "#BE9FE1",
         drawerActiveTintColor: "#F1F1F6",
         drawerInactiveTintColor: "#BE9FE1",
@@ -66,15 +52,15 @@ const AppDrawer = () => {
           name={drawer.name}
           key={drawer.name}
           options={{
-            header: ({ navigation, route, options, back }) => {
-              const title = getHeaderTitle(options, route.name);
-              return (
-                <Header
-                  screen={title}
-                  style={options.headerStyle}
-                />
-              );
-            },
+            // header: ({ navigation, route, options, back }) => {
+            //   const title = getHeaderTitle(options, route.name);
+            //   return (
+            //     <Header
+            //       screen={title}
+            //       style={options.headerStyle}
+            //     />
+            //   );
+            // },
             drawerIcon: ({ focused }) =>
               drawer.iconType === 'MaterialCommunity' ?
                 <MaterialCommunityIcons

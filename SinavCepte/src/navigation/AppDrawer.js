@@ -12,7 +12,6 @@ import SoruPaylasimi from '../Pages/SoruPaylasimi';
 import Sohbet from '../Pages/Sohbet';
 import Konular from '../Pages/Konular';
 import Ayarlar from '../Pages/Ayarlar';
-import Header from '../Components/Header';
 import CustomDrawer from '../Components/DrawerComponents/CustomDrawer';
 import Loading from '../Components/Loading';
 import {

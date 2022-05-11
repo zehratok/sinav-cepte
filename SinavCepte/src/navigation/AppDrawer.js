@@ -1,8 +1,7 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { getHeaderTitle } from '@react-navigation/elements';
 import DrawerItems from '../Constants/DrawerItems';
-import { MaterialCommunityIcons, Feather, FontAwesome5 } from '@expo/vector-icons';
+import { MaterialCommunityIcons, MaterialIcons, Feather, FontAwesome5 } from '@expo/vector-icons';
 import AnaSayfa from '../Pages/AnaSayfa';
 import Profil from '../Pages/Profil';
 import Notlarim from '../Pages/Notlarim';
@@ -12,6 +11,7 @@ import SoruPaylasimi from '../Pages/SoruPaylasimi';
 import Sohbet from '../Pages/Sohbet';
 import Konular from '../Pages/Konular';
 import Ayarlar from '../Pages/Ayarlar';
+import Hakkimizda from '../Pages/Hakkimizda';
 import CustomDrawer from '../Components/DrawerComponents/CustomDrawer';
 import Loading from '../Components/Loading';
 import {
@@ -51,15 +51,6 @@ const AppDrawer = () => {
           name={drawer.name}
           key={drawer.name}
           options={{
-            // header: ({ navigation, route, options, back }) => {
-            //   const title = getHeaderTitle(options, route.name);
-            //   return (
-            //     <Header
-            //       screen={title}
-            //       style={options.headerStyle}
-            //     />
-            //   );
-            // },
             drawerIcon: ({ focused }) =>
               drawer.iconType === 'MaterialCommunity' ?
                 <MaterialCommunityIcons
@@ -69,7 +60,7 @@ const AppDrawer = () => {
                 />
                 :
                 drawer.iconType === 'Material' ?
-                  <MaterialIcon
+                  <MaterialIcons
                     name={drawer.iconName}
                     size={focused ? 30 : 25}
                     color={focused ? "#F1F1F6" : "#BE9FE1"}
@@ -96,9 +87,13 @@ const AppDrawer = () => {
                   : drawer.name === 'Sohbet' ? Sohbet
                     : drawer.name === 'Konular' ? Konular
                       : drawer.name === 'Çıkmış Sorular' ? CikmisSorular
-                        : AnaSayfa
+                        : drawer.name === 'Ayarlar' ? Ayarlar
+                          : drawer.name === 'Hakkımızda' ? Hakkimizda
+                            : drawer.name === 'Profil' ? Profil
+                              : AnaSayfa
           } />)
       }
+      <Drawer.Screen name='Profil' component={Profil} />
     </Drawer.Navigator>
   )
 }

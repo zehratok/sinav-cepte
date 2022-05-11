@@ -3,7 +3,7 @@ import React from 'react'
 import Font from '../Font';
 import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer'
 import ProfilDrawer from './ProfilDrawer';
-import AyarlarDrawer from './AyarlarDrawer';
+import CikisDrawer from './CikisDrawer';
 
 const CustomDrawer = (props) => {
 
@@ -16,7 +16,7 @@ const CustomDrawer = (props) => {
                 contentContainerStyle={styles.contentContainer}>
                 <DrawerItemList {...props} />
             </DrawerContentScrollView>
-            <AyarlarDrawer />
+            <CikisDrawer />
         </View>
 
     )
@@ -28,5 +28,6 @@ const styles = StyleSheet.create({
 
     contentContainer: {
         fontFamily: 'Ubuntu_500Medium',
-    }
+    },
+
 })

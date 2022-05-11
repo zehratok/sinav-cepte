@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { useDispatch, useSelector } from 'react-redux'
 import Buton from '../Components/Buton'
 import DurumCubugu from '../Components/DurumCubugu'
+import Header from '../Components/Header'
 import styles from '../Styles/Profil.style'
 
 const Profil = () => {
@@ -12,6 +13,8 @@ const Profil = () => {
 
     return (
         <ScrollView style={styles.container}>
+            <DurumCubugu/>
+            <Header/>
             <SafeAreaView style={styles.deneme}>
                 <DurumCubugu />
                 <Text style={styles.baslik}>Merhaba {data.adSoyad} </Text>

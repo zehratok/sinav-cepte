@@ -37,6 +37,7 @@
     "react-dom": "17.0.1",
     "react-native": "^0.64.3",
     "react-native-config": "^1.4.5",
+    "react-native-countdown-component": "^2.7.1",
     "react-native-gesture-handler": "^2.1.0",
     "react-native-paper": "^4.11.2",
     "react-native-reanimated": "^2.3.1",

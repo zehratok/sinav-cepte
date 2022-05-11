@@ -1,20 +1,45 @@
 import { Image, ImageBackground, StyleSheet, Text, Dimensions, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { useSelector } from 'react-redux';
-import Font from '../Font';
-
+import Loading from '../Loading';
+import {
+    useFonts,
+    Ubuntu_300Light,
+    Ubuntu_300Light_Italic,
+    Ubuntu_400Regular,
+    Ubuntu_400Regular_Italic,
+    Ubuntu_500Medium,
+    Ubuntu_500Medium_Italic,
+    Ubuntu_700Bold,
+    Ubuntu_700Bold_Italic,
+} from '@expo-google-fonts/ubuntu';
+import { Link } from '@react-navigation/native';
 const ProfilDrawer = () => {
     const data = useSelector(s => s.data);
+    let [fontsLoaded] = useFonts({
+        Ubuntu_300Light,
+        Ubuntu_300Light_Italic,
+        Ubuntu_400Regular,
+        Ubuntu_400Regular_Italic,
+        Ubuntu_500Medium,
+        Ubuntu_500Medium_Italic,
+        Ubuntu_700Bold,
+        Ubuntu_700Bold_Italic,
+    });
 
+    if (!fontsLoaded) {
+        return <Loading />;
+    }
     return (
         <View>
-            <Font />
             <ImageBackground
                 source={require('../../Resimler/drawer.png')}
                 style={styles.profil}>
                 <TouchableOpacity>
-                    <Image source={require('../../Resimler/profil.png')}
-                        style={styles.profilResmi} />
+                    <Link to={{ screen: 'Profil' }} style={styles.profilResmi}>
+                        <Image source={require('../../Resimler/profil.png')}
+                            style={styles.resim} />
+                    </Link>
                 </TouchableOpacity>
                 <View style={styles.profilMetin}>
                     <Text style={styles.profilBaslik}> {data.adSoyad} </Text>
@@ -29,16 +54,21 @@ export default ProfilDrawer
 
 const styles = StyleSheet.create({
     profil: {
-        marginTop: 20,
-        padding: Dimensions.get('window').height / 80,
         flexDirection: 'row',
         alignItems: 'center',
     },
     profilResmi: {
+        marginTop: -(Dimensions.get('window').height / 13),
+        marginBottom: Dimensions.get('window').height / 30,
+        paddingVertical: Dimensions.get('window').height / 15,
+    },
+    resim: {
         flex: 1,
+        alignSelf: 'center',
         padding: Dimensions.get('window').height / 15,
-        width: 10,
-        height: 10
+        width: 100,
+        height: 100,
+
     },
     profilMetin: {
         flex: 1,
@@ -55,6 +85,6 @@ const styles = StyleSheet.create({
     profilYazi: {
         color: '#F1F1F6',
         fontSize: Dimensions.get('window').width / 30,
-        fontFamily: 'Ubuntu_400Regular'
+        fontFamily: 'Ubuntu_400Regular',
     },
 })

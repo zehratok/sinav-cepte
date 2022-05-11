@@ -93,7 +93,11 @@ const AppDrawer = () => {
                               : AnaSayfa
           } />)
       }
-      <Drawer.Screen name='Profil' component={Profil} />
+      <Drawer.Screen name='Profil' component={Profil} options={() => ({
+        drawerLabel: () => null,
+        title: undefined,
+        drawerIcon: () => null,
+      })} />
     </Drawer.Navigator>
   )
 }

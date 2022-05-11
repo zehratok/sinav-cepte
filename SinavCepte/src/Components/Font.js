@@ -11,11 +11,12 @@ import {
     Ubuntu_700Bold_Italic,
 } from '@expo-google-fonts/ubuntu';
 import React from 'react'
+import { View } from 'react-native';
 
 const Font = () => {
-    const font = () => {
-        let [fontsLoaded] = useFonts({
 
+    const fonts = () => {
+        let [fontsLoaded] = useFonts({
             Ubuntu_300Light,
             Ubuntu_300Light_Italic,
             Ubuntu_400Regular,
@@ -30,8 +31,11 @@ const Font = () => {
             return <Loading />;
         }
     }
+    var font = fonts();
     return (
-        font
+        <View>
+            {font}
+        </View>
     )
 }
 export default Font;

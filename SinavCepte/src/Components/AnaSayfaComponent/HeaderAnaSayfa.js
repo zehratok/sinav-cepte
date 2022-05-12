@@ -25,7 +25,7 @@ class HeaderAnaSayfa extends React.Component {
                             ref={animation => {
                                 this.play_btn = animation;
                             }}
-                            source={require('../../Assets/anaSayfaMenu.json')}
+                            source={require('../../Assets/menu.json')}
                             loop={false} />
                     </TouchableWithoutFeedback>
                 </View>

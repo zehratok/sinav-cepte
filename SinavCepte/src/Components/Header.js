@@ -9,17 +9,17 @@ class Header extends React.Component {
     render() {
         const { navigation } = this.props;
         return (
-            <View style={headerStyles.container}>
+            <View style={styles.container}>
                 <Font />
                 <TouchableWithoutFeedback
-                    style={headerStyles.icon}
+                    style={styles.icon}
                     onPress={() => {
                         this.play_btn.play(),
                             navigation.toggleDrawer()
                     }}
                 >
-                    <LottieView
-                        style={headerStyles.lottie}
+                    <LottieView 
+                        style={styles.lottie}
                         ref={animation => {
                             this.play_btn = animation;
                         }}
@@ -27,9 +27,10 @@ class Header extends React.Component {
                         loop={false} />
                 </TouchableWithoutFeedback>
                 <View>
-                    <Text style={headerStyles.baslik}>  {this.props.baslik} </Text>
+                    <Text style={styles.baslik}>  {this.props.baslik} </Text>
                 </View>
-            </View>
+
+            </View >
         )
     }
 }
@@ -40,20 +41,19 @@ export default function (props) {
     return <Header {...props} navigation={navigation} />;
 }
 
-const headerStyles = StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
         display: 'flex',
         flexDirection: 'row',
-        backgroundColor: 'white',
         paddingHorizontal: 15,
         marginTop: 8
     },
     baslik: {
         left: 5,
-        color: '#BE9FE1',
+        color: 'white',
         fontSize: 25,
         fontFamily: 'Ubuntu_500Medium',
-        marginTop: 9,
+        marginTop: 8,
     },
     lottie: {
         padding: Dimensions.get('window').width / 120,

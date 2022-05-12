@@ -17,6 +17,7 @@ import {
     Ubuntu_700Bold,
     Ubuntu_700Bold_Italic,
 } from '@expo-google-fonts/ubuntu';
+import DurumCubugu from '../Components/DurumCubugu';
 
 
 const AnaSayfa = () => {
@@ -53,13 +54,9 @@ const AnaSayfa = () => {
                 />
             }
         >
-            <StatusBar animated={true}
-                backgroundColor="#BE9FE1"
-                barStyle="#BE9FE1"
-                showHideTransition='slide'
-            />
             <SafeAreaView style={styles.anaSayfa}>
                 <HeaderAnaSayfa />
+                <DurumCubugu />
                 <View style={styles.grup}>
                     <View style={styles.kutu}>
                         <Kutu to={{ screen: 'Notlarım' }} icon='MaterialCommunity' name='notebook' baslik=' Notlarım ' />

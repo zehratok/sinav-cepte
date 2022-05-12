@@ -1,10 +1,11 @@
-import React from 'react'
-import { ScrollView, View } from 'react-native'
+import React, { useState } from 'react'
+import { RefreshControl, ScrollView, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import styles from '../Styles/AnaSayfa.style'
 import Kutu from '../Components/AnaSayfaComponent/Kutu';
-import Kutu3 from '../Components/AnaSayfaComponent/Kutu3';
-import Loading from '../Components/Loading'
+import Loading from '../Components/Loading';
+import HeaderAnaSayfa from '../Components/AnaSayfaComponent/HeaderAnaSayfa';
+import { StatusBar } from 'expo-status-bar';
 import {
     useFonts,
     Ubuntu_300Light,
@@ -16,9 +17,17 @@ import {
     Ubuntu_700Bold,
     Ubuntu_700Bold_Italic,
 } from '@expo-google-fonts/ubuntu';
-import HeaderAnaSayfa from '../Components/AnaSayfaComponent/HeaderAnaSayfa';
-import { StatusBar } from 'expo-status-bar';
+
+
 const AnaSayfa = () => {
+
+    const [refresh, setRefresh] = useState(false);
+    const pullMe = () => {
+        setRefresh(true);
+        setTimeout(() => {
+            setRefresh(false)
+        }, 10000)
+    }
 
     let [fontsLoaded] = useFonts({
         Ubuntu_300Light,
@@ -30,15 +39,20 @@ const AnaSayfa = () => {
         Ubuntu_700Bold,
         Ubuntu_700Bold_Italic,
     });
-
     if (!fontsLoaded) {
         return <Loading />;
     }
 
 
     return (
-        <ScrollView style={styles.container}>
-
+        <ScrollView style={styles.container}
+            refreshControl={
+                <RefreshControl
+                    refreshing={refresh}
+                    onRefresh={() => pullMe}
+                />
+            }
+        >
             <StatusBar animated={true}
                 backgroundColor="#BE9FE1"
                 barStyle="#BE9FE1"
@@ -46,7 +60,6 @@ const AnaSayfa = () => {
             />
             <SafeAreaView style={styles.anaSayfa}>
                 <HeaderAnaSayfa />
-
                 <View style={styles.grup}>
                     <View style={styles.kutu}>
                         <Kutu to={{ screen: 'Notlarım' }} icon='MaterialCommunity' name='notebook' baslik=' Notlarım ' />

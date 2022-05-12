@@ -2,6 +2,7 @@ import { Image, ImageBackground, StyleSheet, Text, Dimensions, TouchableOpacity,
 import React from 'react'
 import { useSelector } from 'react-redux';
 import Loading from '../Loading';
+import { FontAwesome5, Ionicons } from '@expo/vector-icons';
 import {
     useFonts,
     Ubuntu_300Light,
@@ -43,7 +44,10 @@ const ProfilDrawer = () => {
                 </TouchableOpacity>
                 <View style={styles.profilMetin}>
                     <Text style={styles.profilBaslik}> {data.adSoyad} </Text>
-                    <Text style={styles.profilYazi}>bişey bişey</Text>
+                    <Text style={styles.profilYazi}>
+                        <Ionicons name="star-half" size={15} color="white" />
+                        Ulaşabileceğini hissettiğin her şey sana aittir.
+                    </Text>
                 </View>
             </ImageBackground>
         </View>
@@ -78,13 +82,16 @@ const styles = StyleSheet.create({
         marginLeft: Dimensions.get('window').width / 90,
     },
     profilBaslik: {
+        marginTop: 10,
         color: '#F1F1F6',
         fontSize: Dimensions.get('window').width / 20,
         fontFamily: 'Ubuntu_500Medium',
     },
     profilYazi: {
+        marginTop: 10,
+        marginRight: 10,
         color: '#F1F1F6',
         fontSize: Dimensions.get('window').width / 30,
-        fontFamily: 'Ubuntu_400Regular',
+        fontFamily: 'Ubuntu_300Light_Italic',
     },
 })

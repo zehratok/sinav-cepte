@@ -22,6 +22,33 @@ export default StyleSheet.create({
         borderRadius: 30,
         position: 'absolute'
     },
+    formContainer: {
+        alignSelf: 'center',
+        bottom: 80,
+    },
+    form: {
+        alignSelf: 'center',
+        bottom: 50,
+    },
+    inputGrup: {
+        alignSelf: 'center',
+        flexDirection: 'row',
+        left: 20,
+        top: 10,
+    },
+    icon: {
+        alignSelf: 'center',
+        padding: 12,
+    },
+    input: {
+        alignSelf: 'center',
+        height: 45,
+        width: 275,
+        padding: 10,
+        fontSize: 17,
+        fontFamily: 'Ubuntu_400Regular',
+        color: 'grey',
+    },
     profilResmi: {
         alignItems: 'center',
         width: (Dimensions.get('window').height / 3) + 2,

@@ -72,7 +72,7 @@ const Giris = () => {
                                 />
                             </View >
                             <View style={styles.parolaLink}>
-                                <Link to={{ screen: 'Parolanı Sıfırla' }} text='Parolanı mı unuttun?' />
+                                <Link to={{ screen: 'Parolamı Unuttum' }} text='Parolanı mı unuttun?' />
                             </View>
                             <Buton text='GİRİŞ YAP'
                                 onPress={handleSubmit}

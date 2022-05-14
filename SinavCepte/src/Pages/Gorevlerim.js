@@ -1,10 +1,10 @@
-import { RefreshControl, Text } from 'react-native'
+import { ImageBackground, RefreshControl, Text, View } from 'react-native'
 import React, { useState } from 'react';
 import styles from '../Styles/Gorevlerim.style';
 import DurumCubugu from '../Components/DurumCubugu';
 import { ScrollView } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Header from '../Components/Header';
+import HeaderButon from '../Components/EkleComponent/HeaderButon';
 
 const Gorevlerim = () => {
   const [refresh, setRefresh] = useState(false);
@@ -13,6 +13,9 @@ const Gorevlerim = () => {
     setTimeout(() => {
       setRefresh(false)
     }, 10000)
+  }
+  function handleGorevEkle() {
+
   }
   return (
     <ScrollView style={styles.container}
@@ -23,11 +26,16 @@ const Gorevlerim = () => {
         />
       }
     >
-      <DurumCubugu />
-      <Header baslik="Görevlerim" />
-      <SafeAreaView style={styles.deneme}>
-        <Text style={styles.baslik}>Görevlerim  </Text>
-      </SafeAreaView>
+      <ImageBackground source={require('../Resimler/drawer.png')}
+        style={[styles.notlarim, { width: undefined, height: undefined }]}
+      >
+        <DurumCubugu />
+        <HeaderButon baslik="Görevlerim" buton='Ekle' icon='alarm-add' onPress={handleGorevEkle} />
+        <SafeAreaView style={styles.gorevlerim}>
+          <View style={styles.deneme}></View>
+
+        </SafeAreaView>
+      </ImageBackground>
     </ScrollView>
   )
 }

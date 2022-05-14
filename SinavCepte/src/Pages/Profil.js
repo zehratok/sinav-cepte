@@ -40,7 +40,6 @@ const Profil = () => {
                 <Header baslik="Profil" />
 
                 <SafeAreaView style={styles.profil}>
-                    {/* <Text style={styles.baslik}>Merhaba {data.adSoyad} </Text> */}
                     <View style={{ alignSelf: "center" }}>
                         <View style={styles.kutu}>
                             <Formik

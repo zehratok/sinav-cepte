@@ -3,18 +3,13 @@ export default StyleSheet.create({
     container: {
         display: 'flex',
         flex: 1,
-        backgroundColor:'white'
+    },
+    gorevlerim: {
+        flex: 1,
 
     },
-    deneme:{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    baslik: {
-        alignSelf: 'center',
-        fontSize: Dimensions.get('window').width / 20,
-        fontWeight: 'bold',
-        color: '#BE9FE1',
+    deneme: {
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height,
     },
 })

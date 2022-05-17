@@ -7,7 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { useSelector } from 'react-redux'
 import Buton from '../Components/Buton'
 import DurumCubugu from '../Components/DurumCubugu'
-import Header from '../Components/Header'
+import HeaderBack from '../Components/HeaderBack'
 import usePost from '../Hooks/usePost'
 import styles from '../Styles/Profil.style'
 
@@ -37,7 +37,7 @@ const Profil = () => {
             <ImageBackground source={require('../Resimler/drawer.png')}
                 style={[styles.profil, { width: Dimensions.get('window').width, height: Dimensions.get('window').height }]}
             >
-                <Header baslik="Profil" />
+                <HeaderBack baslik="Profil" />
 
                 <SafeAreaView style={styles.profil}>
                     <View style={{ alignSelf: "center" }}>

@@ -1,6 +1,6 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Profil from '../Pages/Profil';
+import Profil from '../Screens/Profil';
 const Stack = createNativeStackNavigator();
 
 const Baslangic = () => {

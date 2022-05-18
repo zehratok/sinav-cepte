@@ -4,7 +4,7 @@ import styles from '../Styles/Sohbet.style';
 import DurumCubugu from '../Components/DurumCubugu';
 import { ScrollView } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Header from '../Components/Header';
+import Header from '../Components/Headers/Header';
 
 const Sohbet = () => {
     const [refresh, setRefresh] = useState(false);

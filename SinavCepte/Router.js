@@ -2,8 +2,8 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 import Loading from './src/Components/Loading';
-import Baslangic from './src/navigation/Baslangic';
-import AppDrawer from './src/navigation/AppDrawer';
+import Baslangic from './src/Navigation/Baslangic';
+import AppDrawer from './src/Navigation/AppDrawer';
 
 
 const Router = () => {

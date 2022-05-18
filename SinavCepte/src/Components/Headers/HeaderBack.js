@@ -2,7 +2,7 @@ import { Dimensions, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import Font from './Font';
+import Font from '../Font';
 import LottieView from 'lottie-react-native';
 
 class HeaderBack extends React.Component {
@@ -23,7 +23,7 @@ class HeaderBack extends React.Component {
                         ref={animation => {
                             this.play_btn = animation;
                         }}
-                        source={require('../Assets/back.json')}
+                        source={require('../../Assets/back.json')}
                         loop={false} />
                 </TouchableWithoutFeedback>
                 <View>

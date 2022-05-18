@@ -4,10 +4,11 @@ import styles from '../Styles/Notlarim.style';
 import DurumCubugu from '../Components/DurumCubugu';
 import { ScrollView } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Kutu from '../Components/NotlarimComponent/Kutu';
-import HeaderButon from '../Components/EkleComponent/HeaderButon';
+import NotKutu from '../Components/HelperComponents/NotKutu';
+import HeaderButon from '../Components/Headers/HeaderButon';
+import NotlarimItems from '../Constants/NotlarimItems';
 
-const Notlarim = () => {
+const Notlarim = (props) => {
   const [refresh, setRefresh] = useState(false);
   const pullMe = () => {
     setRefresh(true);
@@ -35,8 +36,17 @@ const Notlarim = () => {
         <HeaderButon baslik="Notlarım" buton='Ekle' icon='add' onPress={handleNotEkle} />
 
         <SafeAreaView style={styles.notlarim}>
+          <View style={styles.kutuGrup}>
+            {
+              NotlarimItems.map(
+                notlar =>
+                  <View style={styles.kutuGrupItem}>
+                    <NotKutu baslik={notlar.baslik} icerik={notlar.icerik} />
+                  </View>
+              )
+            }
+          </View>
 
-          
 
           <View style={styles.deneme}></View>
         </SafeAreaView>

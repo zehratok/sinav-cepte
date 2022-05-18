@@ -1,12 +1,11 @@
 import { RefreshControl, Text } from 'react-native'
 import React, { useState } from 'react';
-import styles from '../Styles/CikmisSorular.style';
+import styles from '../Styles/Ayarlar.style';
 import DurumCubugu from '../Components/DurumCubugu';
 import { ScrollView } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Header from '../Components/Header';
-
-const CikmisSorular = () => {
+import Header from '../Components/Headers/Header';
+const Ayarlar = () => {
   const [refresh, setRefresh] = useState(false);
   const pullMe = () => {
     setRefresh(true);
@@ -23,13 +22,13 @@ const CikmisSorular = () => {
         />
       }
     >
-      <DurumCubugu />
-      <Header baslik="Çıkmış Sorular" />
       <SafeAreaView style={styles.deneme}>
-        <Text style={styles.baslik}>Çıkmış Sorular  </Text>
+        <DurumCubugu />
+        <Header />
+        <Text style={styles.baslik}>Ayarlar  </Text>
       </SafeAreaView>
     </ScrollView>
   )
 }
 
-export default CikmisSorular
+export default Ayarlar

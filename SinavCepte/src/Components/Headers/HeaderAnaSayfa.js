@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import Font from '../Font';
 import LottieView from 'lottie-react-native';
-import Kutu from './KutuHeader';
+import Kutu from './HeaderAnaSayfaKutu';
 
 class HeaderAnaSayfa extends React.Component {
     render() {

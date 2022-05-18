@@ -3,7 +3,8 @@ import React from 'react';
 import { FontAwesome, FontAwesome5, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import Font from '../Font';
 import { Link } from '@react-navigation/native';
-const Kutu = (props) => {
+
+const AnaSayfaMenuKutu = (props) => {
     const Icon = () => {
         if (props.icon === 'MaterialCommunity') {
             return (
@@ -42,7 +43,7 @@ const Kutu = (props) => {
     )
 }
 
-export default Kutu;
+export default AnaSayfaMenuKutu;
 
 const styles = StyleSheet.create({
     kutu: {

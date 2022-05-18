@@ -3,7 +3,7 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import MotivasyonItems from '../../Constants/MotivasyonItems';
 
-const KutuHeader = () => {
+const HeaderAnaSayfaKutu = () => {
     const data = useSelector(s => s.data);
     const rand = MotivasyonItems[Math.floor(Math.random() * MotivasyonItems.length)];
 
@@ -17,7 +17,7 @@ const KutuHeader = () => {
         </View>
     )
 }
-export default KutuHeader;
+export default HeaderAnaSayfaKutu;
 
 const styles = StyleSheet.create({
     kutu: {

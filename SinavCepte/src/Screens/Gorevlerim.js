@@ -4,7 +4,7 @@ import styles from '../Styles/Gorevlerim.style';
 import DurumCubugu from '../Components/DurumCubugu';
 import { ScrollView } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import HeaderButon from '../Components/EkleComponent/HeaderButon';
+import HeaderButon from '../Components/Headers/HeaderButon';
 
 const Gorevlerim = () => {
   const [refresh, setRefresh] = useState(false);

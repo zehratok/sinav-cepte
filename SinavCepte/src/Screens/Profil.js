@@ -7,7 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { useSelector } from 'react-redux'
 import Buton from '../Components/Buton'
 import DurumCubugu from '../Components/DurumCubugu'
-import HeaderBack from '../Components/HeaderBack'
+import HeaderBack from '../Components/Headers/HeaderBack'
 import usePost from '../Hooks/usePost'
 import styles from '../Styles/Profil.style'
 

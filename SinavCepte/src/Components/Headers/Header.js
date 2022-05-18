@@ -2,7 +2,7 @@ import { Dimensions, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import Font from './Font';
+import Font from '../Font';
 import LottieView from 'lottie-react-native';
 
 class Header extends React.Component {
@@ -23,7 +23,7 @@ class Header extends React.Component {
                         ref={animation => {
                             this.play_btn = animation;
                         }}
-                        source={require('../Assets/menu.json')}
+                        source={require('../../Assets/menu.json')}
                         loop={false} />
                 </TouchableWithoutFeedback>
                 <View>

@@ -2,10 +2,9 @@ import React, { useState } from 'react'
 import { RefreshControl, ScrollView, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import styles from '../Styles/AnaSayfa.style'
-import Kutu from '../Components/AnaSayfaComponent/Kutu';
+import Kutu from '../Components/HelperComponents/AnaSayfaMenuKutu';
 import Loading from '../Components/Loading';
-import HeaderAnaSayfa from '../Components/AnaSayfaComponent/HeaderAnaSayfa';
-import { StatusBar } from 'expo-status-bar';
+import HeaderAnaSayfa from '../Components/Headers/HeaderAnaSayfa';
 import {
     useFonts,
     Ubuntu_300Light,

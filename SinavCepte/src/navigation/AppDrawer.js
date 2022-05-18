@@ -13,7 +13,6 @@ import Ayarlar from '../Screens/Ayarlar';
 import Hakkimizda from '../Screens/Hakkimizda';
 import CustomDrawer from '../Components/DrawerComponents/CustomDrawer';
 import Loading from '../Components/Loading';
-import AppStack from './AppStack'
 import {
   useFonts,
   Ubuntu_500Medium,
@@ -92,11 +91,6 @@ const AppDrawer = () => {
                             : AnaSayfa
           } />)
       }
-      <Drawer.Screen name='Stack' component={AppStack} options={() => ({
-        drawerLabel: () => null,
-        title: undefined,
-        drawerIcon: () => null,
-      })} />
     </Drawer.Navigator>
   )
 }

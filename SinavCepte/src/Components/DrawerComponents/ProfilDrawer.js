@@ -37,7 +37,7 @@ const ProfilDrawer = () => {
                 source={require('../../Resimler/drawer.png')}
                 style={styles.profil}>
                 <TouchableOpacity>
-                    <Link to={{ screen: 'Stack' }} style={styles.profilResmi}>
+                    <Link to={{ screen: 'Profil' }} style={styles.profilResmi}>
                         <Image source={require('../../Resimler/profil.png')}
                             style={styles.resim} />
                     </Link>

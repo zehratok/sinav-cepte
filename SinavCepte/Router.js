@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 import Loading from './src/Components/Loading';
 import Baslangic from './src/Navigation/Baslangic';
-import AppDrawer from './src/Navigation/AppDrawer';
+import AppStack from './src/Navigation/AppStack';
 
 
 const Router = () => {
@@ -18,7 +18,7 @@ const Router = () => {
         ) : !userSession ? (
           <Baslangic />
         ) : (
-          <AppDrawer />
+          <AppStack />
         )}
     </NavigationContainer >
   )

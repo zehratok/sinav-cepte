@@ -14,6 +14,7 @@ import Ayarlar from '../Pages/Ayarlar';
 import Hakkimizda from '../Pages/Hakkimizda';
 import CustomDrawer from '../Components/DrawerComponents/CustomDrawer';
 import Loading from '../Components/Loading';
+import AppStack from './AppStack'
 import {
   useFonts,
   Ubuntu_500Medium,
@@ -89,11 +90,10 @@ const AppDrawer = () => {
                       : drawer.name === 'Çıkmış Sorular' ? CikmisSorular
                         : drawer.name === 'Ayarlar' ? Ayarlar
                           : drawer.name === 'Hakkımızda' ? Hakkimizda
-                            : drawer.name === 'Profil' ? Profil
-                              : AnaSayfa
+                            : AnaSayfa
           } />)
       }
-      <Drawer.Screen name='Profil' component={Profil} options={() => ({
+      <Drawer.Screen name='Stack' component={AppStack} options={() => ({
         drawerLabel: () => null,
         title: undefined,
         drawerIcon: () => null,

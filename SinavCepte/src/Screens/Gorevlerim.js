@@ -6,7 +6,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import HeaderButon from '../Components/Headers/HeaderButon';
 
-const Gorevlerim = () => {
+const Gorevlerim = (props) => {
   const [refresh, setRefresh] = useState(false);
   const pullMe = () => {
     setRefresh(true);
@@ -15,7 +15,7 @@ const Gorevlerim = () => {
     }, 10000)
   }
   function handleGorevEkle() {
-
+    props.navigation.navigate('Görev Ekle');
   }
   return (
     <ScrollView style={styles.container}

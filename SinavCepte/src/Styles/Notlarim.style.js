@@ -9,7 +9,11 @@ export default StyleSheet.create({
         flex: 1,
     },
     kutuGrup: {
+        flexWrap: 'wrap',
         flexDirection: 'row',
+    },
+    kutuGrupItem: {
+        flexBasis: '50%'
     },
     deneme: {
         width: Dimensions.get('window').width,

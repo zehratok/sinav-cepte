@@ -17,20 +17,19 @@ const Notlarim = (props) => {
     }, 10000)
   }
   function handleNotEkle() {
-
+    props.navigation.navigate('Not Ekle')
   }
   return (
-    <ScrollView style={styles.container}
-      refreshControl={
-        <RefreshControl
-          refreshing={refresh}
-          onRefresh={() => pullMe}
-        />
-      }
+    <ImageBackground source={require('../Resimler/drawer.png')}
+      style={[styles.notlarim, { width: undefined, height: undefined }]}
     >
-
-      <ImageBackground source={require('../Resimler/drawer.png')}
-        style={[styles.notlarim, { width: undefined, height: undefined }]}
+      <ScrollView style={styles.container}
+        refreshControl={
+          <RefreshControl
+            refreshing={refresh}
+            onRefresh={() => pullMe}
+          />
+        }
       >
         <DurumCubugu />
         <HeaderButon baslik="Notlarım" buton='Ekle' icon='add' onPress={handleNotEkle} />
@@ -46,12 +45,10 @@ const Notlarim = (props) => {
               )
             }
           </View>
-
-
-          <View style={styles.deneme}></View>
         </SafeAreaView>
-      </ImageBackground>
-    </ScrollView>
+      </ScrollView>
+    </ImageBackground>
+
   )
 }
 

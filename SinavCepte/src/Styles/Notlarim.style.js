@@ -10,10 +10,10 @@ export default StyleSheet.create({
     },
     kutuGrup: {
         flexWrap: 'wrap',
-        flexDirection: 'row',
+        flexDirection:'row',
     },
     kutuGrupItem: {
-        flexBasis: '50%'
+        flexBasis: '50%',
     },
     deneme: {
         width: Dimensions.get('window').width,

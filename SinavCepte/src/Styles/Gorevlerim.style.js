@@ -15,8 +15,4 @@ export default StyleSheet.create({
     kutuGrupItem: {
         flexBasis: '50%',
     },
-    deneme: {
-        width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height,
-    }
 })

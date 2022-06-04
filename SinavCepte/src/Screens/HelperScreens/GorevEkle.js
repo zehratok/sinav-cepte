@@ -21,7 +21,7 @@ const GorevEkle = (props) => {
   const [show, setShow] = useState(false);
   const [text, setText] = useState('Tarih-Zaman seçiniz: ');
 
-  const hello = (event, selectedDate) => {
+  const handleTarihSec = (event, selectedDate) => {
     const currentDate = selectedDate || date;
     setShow(Platform.OS === 'ios');
     setDate(currentDate);
@@ -49,7 +49,7 @@ const GorevEkle = (props) => {
       return;
     }
     console.log(values);
-    post("http://10.55.185.3:3001/gorev-ekle", values);
+    post("http://10.55.184.87:3001/gorev-ekle", values);
 
   }
 
@@ -126,7 +126,7 @@ const GorevEkle = (props) => {
                           mode={mode}
                           is24Hour={true}
                           display='default'
-                          onChange={hello}
+                          onChange={handleTarihSec}
                         />)}
 
                   </View>

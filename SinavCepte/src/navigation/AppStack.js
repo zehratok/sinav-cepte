@@ -4,6 +4,7 @@ import AnaSayfa from "../Screens/AnaSayfa";
 import Profil from '../Screens/Profil';
 import GorevEkle from '../Screens/HelperScreens/GorevEkle';
 import NotEkle from '../Screens/HelperScreens/NotEkle';
+import GorevDetay from '../Screens/HelperScreens/GorevDetay';
 import AppDrawer from "./AppDrawer";
 import {
     useFonts,
@@ -41,6 +42,7 @@ const Baslangic = () => {
                 <Stack.Screen name="Profil" component={Profil} />
                 <Stack.Screen name="Görev Ekle" component={GorevEkle} />
                 <Stack.Screen name="Not Ekle" component={NotEkle} />
+                <Stack.Screen name="Görev Detayı" component={GorevDetay} />
                 <Stack.Screen name="Not Detayı" component={NotDetay} />
             </Stack.Group>
 

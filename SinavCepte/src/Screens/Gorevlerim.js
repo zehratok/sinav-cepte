@@ -1,4 +1,4 @@
-import { ImageBackground, RefreshControl, Text, View } from 'react-native'
+import { Alert, ImageBackground, RefreshControl, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react';
 import styles from '../Styles/Gorevlerim.style';
 import DurumCubugu from '../Components/DurumCubugu';
@@ -17,13 +17,13 @@ const Gorevlerim = (props) => {
   const [gorevler, setGorevler] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://10.80.11.95:3001/gorevlerim/${kullanici.id}`).then((response) => {
+    axios.get(`http://10.55.184.87:3001/gorevlerim/${kullanici.id}`).then((response) => {
       setGorevler(response.data);
 
     });
     // console.log(gorevler);
 
-  }, []);
+  });
   function handleGorevEkle() {
     props.navigation.navigate('Görev Ekle');
   }
@@ -33,6 +33,7 @@ const Gorevlerim = (props) => {
       setRefresh(false)
     }, 10000)
   }
+
   return (
     <ImageBackground source={require('../Resimler/drawer.png')}
       style={[styles.gorevlerim, { width: undefined, height: undefined }]}
@@ -54,7 +55,54 @@ const Gorevlerim = (props) => {
                 gorev => {
                   return (
                     <View key={gorev.id} style={styles.kutuGrupItem}>
-                      <GorevKutu baslik={gorev.baslik} icerik={gorev.icerik} tarih={gorev.tarih} />
+                      <GorevKutu baslik={gorev.baslik} icerik={gorev.icerik}
+                        tarih={(gorev.tarih).slice(0, 19).replace('T', ' ')}
+                        onPress={() => props.navigation.navigate('Görev Detayı',
+                          {
+                            gorevId: gorev.id,
+                            gorevBaslik: gorev.baslik,
+                            gorevIcerik: gorev.icerik,
+                            gorevTarih: gorev.tarih
+                          })}
+                        onLongPress={() => Alert.alert(
+                          "Lütfen bir eylem seçiniz.",
+                          "",
+                          [
+                            {
+                              text: "Sil",
+                              onPress: () => {
+                                return Alert.alert(
+                                  "Görevi silmek üzeresiniz.",
+                                  "Görev silinsin mi?",
+                                  [
+                                    {
+                                      text: "Sil",
+                                      onPress: () => {
+                                        // post(`http://10.55.184.87:3001/gorev-sil/${gorev.id}`);
+
+                                      }
+                                    },
+                                    {
+                                      text: "İptal",
+                                    }
+                                  ]
+                                )
+                              },
+                            },
+                            {
+                              text: "Düzenle",
+                              onPress: () => props.navigation.navigate('Görev Detayı',
+                                {
+                                  gorevId: gorev.id,
+                                  gorevBaslik: gorev.baslik,
+                                  gorevIcerik: gorev.icerik,
+                                })
+                            },
+                            {
+                              text: "İptal",
+                            }
+                          ]
+                        )} />
                     </View>
                   )
                 }

@@ -1,12 +1,14 @@
-import { View, Text, TouchableOpacity, ImageBackground, RefreshControl, Alert, ScrollView, TextInput, ActivityIndicator } from 'react-native'
+import { ActivityIndicator, Alert, ImageBackground, RefreshControl, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import styles from '../../Styles/NotEkle.styles'
+import styles from '../../Styles/NotDetay.style'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Formik } from 'formik'
-import usePost from '../../Hooks/usePost'
 import { useSelector } from 'react-redux'
+import usePost from '../../Hooks/usePost'
 
-const NotEkle = (props) => {
+
+const NotDetay = (props) => {
+    const kullanici = useSelector(s => s.data);
     const [refresh, setRefresh] = useState(false);
     const pullMe = () => {
         setRefresh(true);
@@ -14,34 +16,50 @@ const NotEkle = (props) => {
             setRefresh(false)
         }, 10000)
     }
-    const kullanici = useSelector(s => s.data);
+    const { notId, notBaslik, notIcerik } = props.route.params;
+    const [baslik, setBaslik] = useState(notBaslik);
+    const [icerik, setIcerik] = useState(notIcerik);
     const { data, loading, error, post } = usePost();
-    function handleNotEkle(values) {
-        if (!values.baslik && !values.icerik) {
-            Alert.alert("HATA!", "Not eklemek için içerik giriniz!");
+    useEffect(() => {
+        setBaslik(notBaslik);
+        setIcerik(notIcerik);
+
+    }, []);
+    function handleNotGuncelle(values) {
+        if ((values.baslik == null) && (values.icerik == null)) {
+            Alert.alert("UYARI!", "Başlık ve içerik bilgisi boş bırakılamaz!");
             return;
         }
+        if (!values.baslik && !values.icerik) {
+            values.baslik = baslik;
+            values.icerik = icerik;
+        }
+        if (!values.baslik && values.icerik) {
+            values.baslik = baslik;
+        }
+        if (values.baslik && !values.icerik) {
+            values.icerik = icerik;
+        }
+
+        post(`http://10.55.184.87:3001/not-guncelle/${notId}`, values);
         console.log(values);
 
-        post("http://10.55.184.87:3001/not-ekle", values);
-    }
-
-    useEffect(() => {
+    } useEffect(() => {
         if (error || data == null) {
             return;
         }
         if (data.mesaj == "Hata") {
-            Alert.alert('HATA!', 'Beklenmedik bir hata oluştu.');
+            Alert.alert('HATA', 'Beklenmedik bir hata oluştu.');
         }
         if (data.mesaj == "Kayit işlemi başarılı") {
-            Alert.alert('Notunuz başarıyla kaydedildi.');
+            Alert.alert('Görev başarıyla kaydedildi.');
             props.navigation.navigate('Notlarım');
         }
     }, [data])
 
     return (
         <ImageBackground source={require('../../Resimler/drawerr.png')}
-            style={[styles.notEkle, { width: undefined, height: undefined }]}
+            style={[styles.notDetay, { width: undefined, height: undefined }]}
         >
             <ScrollView style={styles.container}
                 refreshControl={
@@ -51,10 +69,10 @@ const NotEkle = (props) => {
                     />
                 }
             >
-                <SafeAreaView style={styles.notEkle}>
+                <SafeAreaView style={styles.notDetay}>
                     <Formik
                         initialValues={{ kullanici_id: kullanici.id, baslik: '', icerik: '' }}
-                        onSubmit={handleNotEkle}
+                        onSubmit={handleNotGuncelle}
                         enableReinitialize={true}
                     >
                         {({ handleSubmit, handleChange, values }) => (
@@ -63,16 +81,21 @@ const NotEkle = (props) => {
                                     <View style={styles.baslik}>
                                         <TextInput
                                             style={styles.baslikInput}
-                                            placeholder="Başlık giriniz..."
-                                            value={values.baslik}
+                                            multiline={true}
+                                            defaultValue={baslik}
+                                            placeholder="Başlık eklemek için dokunun"
+                                            value={setBaslik}
                                             onChangeText={handleChange('baslik')}
                                         />
+
                                     </View>
                                     <View style={styles.icerik} >
                                         <TextInput
+                                            multiline={true}
                                             style={styles.icerikInput}
-                                            placeholder="Notunuzu buraya yazınız..."
-                                            value={values.icerik}
+                                            defaultValue={icerik}
+                                            placeholder="İçerik eklemek için dokunun"
+                                            value={setIcerik}
                                             onChangeText={handleChange('icerik')}
                                         />
                                     </View>
@@ -80,7 +103,8 @@ const NotEkle = (props) => {
                                 <TouchableOpacity style={styles.buton} onPress={handleSubmit}>
                                     {loading ? (
                                         <ActivityIndicator color='white' />
-                                    ) : (<Text style={styles.butonText}>KAYDET</Text>
+                                    ) : (
+                                        <Text style={styles.butonText}>GÜNCELLE</Text>
                                     )}
                                 </TouchableOpacity>
                             </View>
@@ -92,4 +116,4 @@ const NotEkle = (props) => {
     )
 }
 
-export default NotEkle
+export default NotDetay;

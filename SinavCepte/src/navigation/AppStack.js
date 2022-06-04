@@ -10,6 +10,7 @@ import {
     Ubuntu_700Bold,
 } from '@expo-google-fonts/ubuntu';
 import Loading from "../Components/Loading";
+import NotDetay from "../Screens/HelperScreens/NotDetay";
 
 const Stack = createNativeStackNavigator();
 
@@ -40,6 +41,7 @@ const Baslangic = () => {
                 <Stack.Screen name="Profil" component={Profil} />
                 <Stack.Screen name="Görev Ekle" component={GorevEkle} />
                 <Stack.Screen name="Not Ekle" component={NotEkle} />
+                <Stack.Screen name="Not Detayı" component={NotDetay} />
             </Stack.Group>
 
         </Stack.Navigator >

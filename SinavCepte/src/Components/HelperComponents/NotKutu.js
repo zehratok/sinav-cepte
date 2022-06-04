@@ -7,7 +7,7 @@ const NotKutu = (props) => {
     return (
         <View>
             <Font />
-            <TouchableOpacity style={styles.container}>
+            <TouchableOpacity style={styles.container} onPress={props.onPress} onLongPress={props.onLongPress}>
                 <View style={styles.baslik}>
                     <Text style={styles.baslikMetin}> {props.baslik} </Text>
                 </View>
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     icerik: {
         flex: 4,
         marginHorizontal: 20,
-        marginVertical:10
+        marginVertical: 10
     },
     icerikMetin: {
         color: '#C9B6E4',

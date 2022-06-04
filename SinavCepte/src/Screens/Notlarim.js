@@ -87,7 +87,7 @@ const Notlarim = (props) => {
                               text: "Düzenle",
                               onPress: () => props.navigation.navigate('Not Detayı',
                                 {
-                                  not: not.id,
+                                  notId: not.id,
                                   notBaslik: not.baslik,
                                   notIcerik: not.icerik,
                                 })

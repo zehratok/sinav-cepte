@@ -1,10 +1,10 @@
 import { View, Text, TouchableOpacity, StyleSheet, Dimensions } from 'react-native'
 import React from 'react';
-import { FontAwesome, FontAwesome5, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
+import { FontAwesome, FontAwesome5, MaterialCommunityIcons, MaterialIcons, Entypo } from '@expo/vector-icons';
 import Font from '../Font';
 import { Link } from '@react-navigation/native';
 
-const AnaSayfaMenuKutu = (props) => {
+const MenuKutu = (props) => {
     const Icon = () => {
         if (props.icon === 'MaterialCommunity') {
             return (
@@ -26,6 +26,11 @@ const AnaSayfaMenuKutu = (props) => {
                 <MaterialIcons name={props.name} style={styles.icon} />
             )
         }
+        if (props.icon === 'Entypo') {
+            return (
+                <Entypo name={props.name} style={styles.icon} />
+            )
+        }
     }
 
     return (
@@ -43,7 +48,7 @@ const AnaSayfaMenuKutu = (props) => {
     )
 }
 
-export default AnaSayfaMenuKutu;
+export default MenuKutu;
 
 const styles = StyleSheet.create({
     kutu: {

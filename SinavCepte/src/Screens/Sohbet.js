@@ -5,6 +5,7 @@ import DurumCubugu from '../Components/DurumCubugu';
 import { ScrollView } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from '../Components/Headers/Header';
+import Kutu from '../Components/HelperComponents/MenuKutu';
 
 const Sohbet = () => {
     const [refresh, setRefresh] = useState(false);
@@ -31,15 +32,19 @@ const Sohbet = () => {
                 <SafeAreaView style={styles.sohbet}>
                     <View style={styles.grup}>
                         <View style={styles.kutu}>
+                            <Kutu to={{ screen: 'LGS Sohbet' }} icon='FontAwesome' name='group' baslik=' LGS Sohbet ' />
                         </View>
                         <View style={styles.kutu}>
+                            <Kutu to={{ screen: 'YKS Sohbet' }} icon='Entypo' name='chat' baslik=' YKS Sohbet ' />
                         </View>
 
                     </View>
                     <View style={styles.grup}>
                         <View style={styles.kutu}>
+                            <Kutu to={{ screen: 'MSÜ Sohbet' }} icon='FontAwesome5' name='envelope-open-text' baslik=' MSÜ Sohbet ' />
                         </View>
                         <View style={styles.kutu}>
+                            <Kutu to={{ screen: 'DGS Sohbet' }} icon='MaterialCommunity' name='thought-bubble' baslik=' DGS Sohbet ' />
                         </View>
                     </View>
                 </SafeAreaView>

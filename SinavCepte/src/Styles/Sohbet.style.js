@@ -3,18 +3,27 @@ export default StyleSheet.create({
     container: {
         display: 'flex',
         flex: 1,
-        backgroundColor:'white'
-
     },
-    deneme:{
+    sohbet: {
         flex: 1,
-        justifyContent: 'center',
+    },
+    grup: {
+        flex: 1,
+        flexDirection: 'row',
+        marginHorizontal: 10,
+    },
+    kutu: {
+        flex: 1,
         alignItems: 'center',
+        marginHorizontal: Dimensions.get('window').width / 50,
+        marginVertical: Dimensions.get('window').height / 70,
+        padding: Dimensions.get('window').width / 50,
+        borderTopLeftRadius: 50,
+        borderBottomRightRadius: 50,
+        borderBottomLeftRadius: 25,
+        borderTopRightRadius: 50,
+        borderWidth: 0,
+        backgroundColor: '#f4effa'
     },
-    baslik: {
-        alignSelf: 'center',
-        fontSize: Dimensions.get('window').width / 20,
-        fontWeight: 'bold',
-        color: '#BE9FE1',
-    },
+
 })

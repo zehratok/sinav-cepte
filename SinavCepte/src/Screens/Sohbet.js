@@ -1,5 +1,5 @@
-import { RefreshControl, Text } from 'react-native'
-import React, { useState } from 'react';
+import { ActivityIndicator, Alert, ImageBackground, RefreshControl, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import React, { useState, useEffect, useCallback } from 'react';
 import styles from '../Styles/Sohbet.style';
 import DurumCubugu from '../Components/DurumCubugu';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -15,20 +15,36 @@ const Sohbet = () => {
         }, 10000)
     }
     return (
-        <ScrollView style={styles.container}
-            refreshControl={
-                <RefreshControl
-                    refreshing={refresh}
-                    onRefresh={() => pullMe}
-                />
-            }
+        <ImageBackground source={require('../Resimler/drawer.png')}
+            style={[styles.sohbet, { width: undefined, height: undefined }]}
         >
-            <DurumCubugu />
-            <Header baslik="Sohbet" />
-            <SafeAreaView style={styles.deneme}>
-                <Text style={styles.baslik}> Sohbet  </Text>
-            </SafeAreaView>
-        </ScrollView>
+            <ScrollView style={styles.container}
+                refreshControl={
+                    <RefreshControl
+                        refreshing={refresh}
+                        onRefresh={() => pullMe}
+                    />
+                }
+            >
+                <DurumCubugu />
+                <Header baslik="Sohbet" />
+                <SafeAreaView style={styles.sohbet}>
+                    <View style={styles.grup}>
+                        <View style={styles.kutu}>
+                        </View>
+                        <View style={styles.kutu}>
+                        </View>
+
+                    </View>
+                    <View style={styles.grup}>
+                        <View style={styles.kutu}>
+                        </View>
+                        <View style={styles.kutu}>
+                        </View>
+                    </View>
+                </SafeAreaView>
+            </ScrollView>
+        </ImageBackground>
     )
 }
 

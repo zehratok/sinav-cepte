@@ -12,11 +12,18 @@ import SohbetYKS from '../Screens/HelperScreens/SohbetYKS';
 import SohbetLGS from '../Screens/HelperScreens/SohbetLGS';
 import SohbetDGS from '../Screens/HelperScreens/SohbetDGS';
 import SohbetMSU from '../Screens/HelperScreens/SohbetMSU';
+import SoruYKS from '../Screens/HelperScreens/SoruYKS';
+import SoruLGS from '../Screens/HelperScreens/SoruLGS';
+import SoruMSU from '../Screens/HelperScreens/SoruMSU';
+import SoruDGS from '../Screens/HelperScreens/SoruDGS';
+
 import AppDrawer from "./AppDrawer";
 import {
     useFonts,
     Ubuntu_700Bold,
 } from '@expo-google-fonts/ubuntu';
+import SoruDetay from "../Screens/HelperScreens/SoruDetay";
+import ResimDetay from "../Screens/HelperScreens/ResimDetay";
 
 const Stack = createNativeStackNavigator();
 
@@ -54,6 +61,8 @@ const Baslangic = () => {
                 <Stack.Screen name="LGS Sohbet" component={SohbetLGS} />
                 <Stack.Screen name="MSÜ Sohbet" component={SohbetMSU} />
                 <Stack.Screen name="DGS Sohbet" component={SohbetDGS} />
+                <Stack.Screen name="Soru Detayı" component={SoruDetay} />
+                <Stack.Screen name="Resim Detayı" component={ResimDetay} />
 
             </Stack.Group>
 

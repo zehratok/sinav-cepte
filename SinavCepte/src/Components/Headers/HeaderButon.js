@@ -57,7 +57,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         paddingHorizontal: 15,
         marginTop: 8,
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+     
     },
     header: {
         flexDirection: 'row',
@@ -78,10 +79,10 @@ const styles = StyleSheet.create({
     },
     buton: {
         flexDirection: 'row',
-        flex: 1,
         backgroundColor: 'white',
         borderRadius: 10,
-        padding: 1
+        padding: 1,
+
     },
 
 

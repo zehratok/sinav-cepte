@@ -61,6 +61,10 @@ const Baslangic = () => {
                 <Stack.Screen name="LGS Sohbet" component={SohbetLGS} />
                 <Stack.Screen name="MSÜ Sohbet" component={SohbetMSU} />
                 <Stack.Screen name="DGS Sohbet" component={SohbetDGS} />
+                <Stack.Screen name="DGS Soru Paylaşımı" component={SoruDGS} />
+                <Stack.Screen name="YKS Soru Paylaşımı" component={SoruYKS} />
+                <Stack.Screen name="LGS Soru Paylaşımı" component={SoruLGS} />
+                <Stack.Screen name="MSÜ Soru Paylaşımı" component={SoruMSU} />
                 <Stack.Screen name="Soru Detayı" component={SoruDetay} />
                 <Stack.Screen name="Resim Detayı" component={ResimDetay} />
 

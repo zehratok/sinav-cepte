@@ -3,6 +3,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import DrawerItems from '../Constants/DrawerItems';
 import { MaterialCommunityIcons, MaterialIcons, Feather, FontAwesome5 } from '@expo/vector-icons';
 import AnaSayfa from '../Screens/AnaSayfa';
+import Kartlar from '../Screens/Kartlar';
 import Notlarim from '../Screens/Notlarim';
 import Gorevlerim from '../Screens/Gorevlerim';
 import CikmisSorular from '../Screens/CikmisSorular';
@@ -80,15 +81,16 @@ const AppDrawer = () => {
 
           }}
           component={
-            drawer.name === 'Notlarım' ? Notlarim
-              : drawer.name === 'Görevlerim' ? Gorevlerim
-                : drawer.name === 'Soru Paylaşımı' ? SoruPaylasimi
-                  : drawer.name === 'Sohbet' ? Sohbet
-                    : drawer.name === 'Konular' ? Konular
-                      : drawer.name === 'Çıkmış Sorular' ? CikmisSorular
-                        : drawer.name === 'Ayarlar' ? Ayarlar
-                          : drawer.name === 'Hakkımızda' ? Hakkimizda
-                            : AnaSayfa
+            drawer.name === 'Kartlar' ? Kartlar
+              : drawer.name === 'Notlarım' ? Notlarim
+                : drawer.name === 'Görevlerim' ? Gorevlerim
+                  : drawer.name === 'Soru Paylaşımı' ? SoruPaylasimi
+                    : drawer.name === 'Sohbet' ? Sohbet
+                      : drawer.name === 'Konular' ? Konular
+                        : drawer.name === 'Çıkmış Sorular' ? CikmisSorular
+                            : drawer.name === 'Ayarlar' ? Ayarlar
+                              : drawer.name === 'Hakkımızda' ? Hakkimizda
+                                : AnaSayfa
           } />)
       }
     </Drawer.Navigator>

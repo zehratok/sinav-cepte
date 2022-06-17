@@ -4,35 +4,41 @@ export default StyleSheet.create({
     container: {
         display: 'flex',
         flexDirection: 'column',
-        backgroundColor: 'white',
+        backgroundColor: '#e8e4ec',
     },
     anaSayfa: {
 
     },
-    grup: {
-        flex: 1,
-        flexDirection: 'row',
-        marginLeft: Dimensions.get('window').width / 70,
-        marginRight: Dimensions.get('window').width / 70,
-
-    },
-    kutu: {
+    tekKutu: {
         flex: 1,
         alignItems: 'center',
-        marginBottom: Dimensions.get('window').height / 70,
-        marginTop: Dimensions.get('window').height / 70,
-        marginLeft: Dimensions.get('window').width / 50,
-        marginRight: Dimensions.get('window').width / 50,
+        marginVertical: 10,
+        marginHorizontal: 15,
         padding: Dimensions.get('window').width / 70,
         borderTopLeftRadius: 10,
         borderBottomRightRadius: 10,
         borderBottomLeftRadius: 50,
         borderTopRightRadius: 50,
-        shadowOffset: { width: 0, height: 1 },
-        shadowOpacity: 0.8,
-        shadowRadius: 2,
-        elevation: 3,
-        shadowColor: '#959da5',
+        backgroundColor: '#d4beeb'
+    },
+    grup: {
+        flex: 1,
+        flexDirection: 'row',
+        marginHorizontal: 7,
+
+
+    },
+    kutu: {
+        flex: 1,
+        alignItems: 'center',
+        marginVertical:10,
+        marginHorizontal: 8,
+        padding: Dimensions.get('window').width / 70,
+        borderTopLeftRadius: 10,
+        borderBottomRightRadius: 10,
+        borderBottomLeftRadius: 50,
+        borderTopRightRadius: 50,
+        backgroundColor: '#d4beeb'
 
     },
 

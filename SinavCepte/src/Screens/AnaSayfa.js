@@ -5,6 +5,7 @@ import styles from '../Styles/AnaSayfa.style'
 import Kutu from '../Components/HelperComponents/MenuKutu';
 import Loading from '../Components/Loading';
 import HeaderAnaSayfa from '../Components/Headers/HeaderAnaSayfa';
+import DurumCubugu from '../Components/DurumCubugu';
 import {
     useFonts,
     Ubuntu_300Light,
@@ -16,7 +17,6 @@ import {
     Ubuntu_700Bold,
     Ubuntu_700Bold_Italic,
 } from '@expo-google-fonts/ubuntu';
-import DurumCubugu from '../Components/DurumCubugu';
 
 
 const AnaSayfa = () => {
@@ -24,6 +24,11 @@ const AnaSayfa = () => {
     const [refresh, setRefresh] = useState(false);
     const pullMe = () => {
         setRefresh(true);
+        useEffect(() => {
+            return (
+                <AnaSayfa />
+            )
+        });
         setTimeout(() => {
             setRefresh(false)
         }, 10000)
@@ -56,6 +61,9 @@ const AnaSayfa = () => {
             <SafeAreaView style={styles.anaSayfa}>
                 <HeaderAnaSayfa />
                 <DurumCubugu />
+                <View style={styles.tekKutu}>
+                    <Kutu to={{ screen: 'Kartlar' }} icon='MaterialCommunity' name='cards' baslik=' Kartlar ' />
+                </View>
                 <View style={styles.grup}>
                     <View style={styles.kutu}>
                         <Kutu to={{ screen: 'Notlarım' }} icon='MaterialCommunity' name='notebook' baslik=' Notlarım ' />

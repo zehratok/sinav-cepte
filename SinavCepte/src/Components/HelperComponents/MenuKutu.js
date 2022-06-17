@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         marginTop: Dimensions.get('window').height / 35,
         fontSize: Dimensions.get('window').width / 7,
-        color: '#BE9FE1',
+        color: '#7a6790',
     },
     baslik: {
         flex: 1,
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
         flex:1,
         alignSelf: 'center',
         fontSize: Dimensions.get('window').height / 40,
-        color: '#BE9FE1',
+        color: '#5b4d6a',
         fontFamily: 'Ubuntu_700Bold_Italic'
     },
 })

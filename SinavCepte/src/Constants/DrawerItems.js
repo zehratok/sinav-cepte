@@ -5,6 +5,11 @@ export default [
         iconName: 'home'
     },
     {
+        name: 'Kartlar',
+        iconType: 'MaterialCommunity',
+        iconName: 'cards'
+    },
+    {
         name: 'Notlarım',
         iconType: 'MaterialCommunity',
         iconName: 'notebook'

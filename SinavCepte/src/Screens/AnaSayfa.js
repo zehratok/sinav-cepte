@@ -90,7 +90,9 @@ const AnaSayfa = () => {
                     </View>
 
                 </View>
-
+                <View style={styles.tekKutu}>
+                    <Kutu to={{ screen: 'Hesaplamalar' }} icon='FontAwesome5' name='calculator' baslik=' Hesaplamalar ' />
+                </View>
             </SafeAreaView>
         </ScrollView >
     )

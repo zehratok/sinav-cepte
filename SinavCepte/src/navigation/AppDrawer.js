@@ -10,6 +10,7 @@ import CikmisSorular from '../Screens/CikmisSorular';
 import SoruPaylasimi from '../Screens/SoruPaylasimi';
 import Sohbet from '../Screens/Sohbet';
 import Konular from '../Screens/Konular';
+import Hesaplamalar from '../Screens/Hesaplamalar';
 import Ayarlar from '../Screens/Ayarlar';
 import Hakkimizda from '../Screens/Hakkimizda';
 import CustomDrawer from '../Components/DrawerComponents/CustomDrawer';
@@ -88,6 +89,7 @@ const AppDrawer = () => {
                     : drawer.name === 'Sohbet' ? Sohbet
                       : drawer.name === 'Konular' ? Konular
                         : drawer.name === 'Çıkmış Sorular' ? CikmisSorular
+                          : drawer.name === 'Hesaplamalar' ? Hesaplamalar
                             : drawer.name === 'Ayarlar' ? Ayarlar
                               : drawer.name === 'Hakkımızda' ? Hakkimizda
                                 : AnaSayfa

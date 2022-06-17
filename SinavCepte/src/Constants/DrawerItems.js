@@ -40,6 +40,11 @@ export default [
         iconName: 'lead-pencil'
     },
     {
+        name: 'Hesaplamalar',
+        iconType: 'FontAwesome5',
+        iconName: 'calculator'
+    },
+    {
         name: 'Ayarlar',
         iconType: 'Material',
         iconName: 'settings'

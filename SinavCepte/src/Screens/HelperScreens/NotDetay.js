@@ -1,6 +1,6 @@
 import { ActivityIndicator, Alert, ImageBackground, RefreshControl, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import styles from '../../Styles/NotDetay.style'
+import styles from '../../Styles/Not.styles'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Formik } from 'formik'
 import { useSelector } from 'react-redux'
@@ -41,7 +41,7 @@ const NotDetay = (props) => {
             values.icerik = icerik;
         }
 
-        post(`http://10.55.184.87:3001/not-guncelle/${notId}`, values);
+        post(`http://192.168.43.215:3001/not-guncelle/${notId}`, values);
         console.log(values);
 
     } useEffect(() => {

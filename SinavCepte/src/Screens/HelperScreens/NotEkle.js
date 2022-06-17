@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity, ImageBackground, RefreshControl, Alert, ScrollView, TextInput, ActivityIndicator } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import styles from '../../Styles/NotEkle.styles'
+import styles from '../../Styles/Not.styles'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Formik } from 'formik'
 import usePost from '../../Hooks/usePost'
@@ -23,7 +23,7 @@ const NotEkle = (props) => {
         }
         console.log(values);
 
-        post("http://10.55.184.87:3001/not-ekle", values);
+        post("http://192.168.43.215:3001/not-ekle", values);
     }
 
     useEffect(() => {
@@ -66,6 +66,7 @@ const NotEkle = (props) => {
                                             placeholder="Başlık giriniz..."
                                             value={values.baslik}
                                             onChangeText={handleChange('baslik')}
+                                            multiline={true}
                                         />
                                     </View>
                                     <View style={styles.icerik} >
@@ -74,6 +75,7 @@ const NotEkle = (props) => {
                                             placeholder="Notunuzu buraya yazınız..."
                                             value={values.icerik}
                                             onChangeText={handleChange('icerik')}
+                                            multiline={true}
                                         />
                                     </View>
                                 </View>

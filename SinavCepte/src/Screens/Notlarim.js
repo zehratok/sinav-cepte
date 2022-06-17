@@ -31,82 +31,83 @@ const Notlarim = (props) => {
   });
 
   return (
-    <ImageBackground source={require('../Resimler/drawer.png')}
-      style={[styles.notlarim, { width: undefined, height: undefined }]}
+
+    <ScrollView style={styles.container}
+      refreshControl={
+        <RefreshControl
+          refreshing={refresh}
+          onRefresh={() => pullMe}
+        />
+      }
     >
-      <ScrollView style={styles.container}
-        refreshControl={
-          <RefreshControl
-            refreshing={refresh}
-            onRefresh={() => pullMe}
-          />
-        }
+      <ImageBackground source={require('../Resimler/drawer.png')}
+        style={{ width: undefined, height: 85 }}
       >
         <DurumCubugu />
         <HeaderButon baslik="Notlarım" buton='Ekle' icon='add' onPress={() => props.navigation.navigate('Not Ekle')} />
-        <SafeAreaView style={styles.notlarim}>
-          <View style={styles.kutuGrup}>
-            {
-              notlar.map(
-                not => {
-                  return (
-                    <View key={not.id} style={styles.kutuGrupItem}>
-                      <NotKutu baslik={not.baslik} icerik={not.icerik}
-                        onPress={() => props.navigation.navigate('Not Detayı',
+      </ImageBackground>
+      <SafeAreaView style={styles.notlarim}>
+        <View style={styles.kutuGrup}>
+          {
+            notlar.map(
+              not => {
+                return (
+                  <View key={not.id} style={styles.kutuGrupItem}>
+                    <NotKutu baslik={not.baslik} icerik={not.icerik}
+                      onPress={() => props.navigation.navigate('Not Detayı',
+                        {
+                          notId: not.id,
+                          notBaslik: not.baslik,
+                          notIcerik: not.icerik,
+                        })}
+                      onLongPress={() => Alert.alert(
+                        "Lütfen bir eylem seçiniz.",
+                        "",
+                        [
                           {
-                            notId: not.id,
-                            notBaslik: not.baslik,
-                            notIcerik: not.icerik,
-                          })}
-                        onLongPress={() => Alert.alert(
-                          "Lütfen bir eylem seçiniz.",
-                          "",
-                          [
-                            {
-                              text: "Sil",
-                              onPress: () => {
-                                return Alert.alert(
-                                  "Notu silmek üzeresiniz.",
-                                  "Not silinsin mi?",
-                                  [
-                                    {
-                                      text: "Sil",
-                                      onPress: () => {
-                                        // post(`http://10.55.184.87:3001/not-sil/${not.id}`);
+                            text: "Sil",
+                            onPress: () => {
+                              return Alert.alert(
+                                "Notu silmek üzeresiniz.",
+                                "Not silinsin mi?",
+                                [
+                                  {
+                                    text: "Sil",
+                                    onPress: () => {
+                                      // post(`http://10.55.184.87:3001/not-sil/${not.id}`);
 
-                                      }
-                                    },
-                                    {
-                                      text: "İptal",
                                     }
-                                  ]
-                                )
-                              },
+                                  },
+                                  {
+                                    text: "İptal",
+                                  }
+                                ]
+                              )
                             },
-                            {
-                              text: "Düzenle",
-                              onPress: () => props.navigation.navigate('Not Detayı',
-                                {
-                                  notId: not.id,
-                                  notBaslik: not.baslik,
-                                  notIcerik: not.icerik,
-                                })
-                            },
-                            {
-                              text: "İptal",
-                            }
-                          ]
-                        )
-                        } />
-                    </View>
-                  )
-                }
-              )
-            }
-          </View>
-        </SafeAreaView>
-      </ScrollView>
-    </ImageBackground>
+                          },
+                          {
+                            text: "Düzenle",
+                            onPress: () => props.navigation.navigate('Not Detayı',
+                              {
+                                notId: not.id,
+                                notBaslik: not.baslik,
+                                notIcerik: not.icerik,
+                              })
+                          },
+                          {
+                            text: "İptal",
+                          }
+                        ]
+                      )
+                      } />
+                  </View>
+                )
+              }
+            )
+          }
+        </View>
+      </SafeAreaView>
+    </ScrollView>
 
   )
 }

@@ -7,39 +7,45 @@ export default StyleSheet.create({
     notEkle: {
         flex: 1
     },
+    notDetay: {
+        flex: 1
+    },
     form: {
-        backgroundColor: 'white',
+        backgroundColor: '#e8e4ec',
         marginHorizontal: 25,
         marginVertical: 25,
-        borderRadius: 25
+        borderRadius: 10
     },
     baslik: {
-        height: Dimensions.get('window').height / 16,
-        borderBottomColor: '#F1F1F6',
+        height: Dimensions.get('window').height / 13,
+        borderBottomColor: '#dfcef0',
         borderBottomWidth: 1,
         margin: 5,
     },
     baslikInput: {
         left: 15,
         top: 5,
-        color: '#BE9FE1',
-        fontSize: 20,
+        marginRight:30,
+        color: '#9c83b8',
+        fontSize: 18,
         fontFamily: 'Ubuntu_500Medium',
+        maxHeight:40
     },
     icerik: {
         height: Dimensions.get('window').height / 2,
-        margin: 10
+        margin: 10,
     },
     icerikInput: {
-        color: '#C9B6E4',
-        fontSize: 13,
-        fontFamily: 'Ubuntu_500Medium_Italic',
-        left: 5
+        color: '#be9fe1',
+        fontSize: 15,
+        fontFamily: 'Ubuntu_400Regular',
+        left: 5,
+        marginRight:8
     },
     buton: {
         marginTop: 20,
         alignSelf: 'center',
-        backgroundColor: '#BE9FE1',
+        backgroundColor: '#7a6790',
         width: Dimensions.get('window').width / 2,
         height: 45,
         justifyContent: 'center',
@@ -47,7 +53,7 @@ export default StyleSheet.create({
     },
     butonText: {
         alignSelf: 'center',
-        color: 'white',
+        color: '#e8e4ec',
         fontSize: 20,
         fontFamily: 'Ubuntu_700Bold',
     },

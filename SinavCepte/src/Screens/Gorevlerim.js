@@ -35,83 +35,84 @@ const Gorevlerim = (props) => {
   }
 
   return (
-    <ImageBackground source={require('../Resimler/drawer.png')}
-      style={[styles.gorevlerim, { width: undefined, height: undefined }]}
+
+    <ScrollView style={styles.container}
+      refreshControl={
+        <RefreshControl
+          refreshing={refresh}
+          onRefresh={() => pullMe}
+        />
+      }
     >
-      <ScrollView style={styles.container}
-        refreshControl={
-          <RefreshControl
-            refreshing={refresh}
-            onRefresh={() => pullMe}
-          />
-        }
+      <ImageBackground source={require('../Resimler/drawer.png')}
+        style={{ width: undefined, height: 85 }}
       >
         <DurumCubugu />
         <HeaderButon baslik="Görevlerim" buton='Ekle' icon='alarm-add' onPress={handleGorevEkle} />
-        <SafeAreaView style={styles.gorevlerim}>
-          <View style={styles.kutuGrup}>
-            {
-              gorevler.map(
-                gorev => {
-                  return (
-                    <View key={gorev.id} style={styles.kutuGrupItem}>
-                      <GorevKutu baslik={gorev.baslik} icerik={gorev.icerik}
-                        tarih={(gorev.tarih).slice(0, 19).replace('T', ' ')}
-                        onPress={() => props.navigation.navigate('Görev Detayı',
+      </ImageBackground>
+      <SafeAreaView style={styles.gorevlerim}>
+        <View style={styles.kutuGrup}>
+          {
+            gorevler.map(
+              gorev => {
+                return (
+                  <View key={gorev.id} style={styles.kutuGrupItem}>
+                    <GorevKutu baslik={gorev.baslik} icerik={gorev.icerik}
+                      tarih={(gorev.tarih).slice(0, 19).replace('T', ' ')}
+                      onPress={() => props.navigation.navigate('Görev Detayı',
+                        {
+                          gorevId: gorev.id,
+                          gorevBaslik: gorev.baslik,
+                          gorevIcerik: gorev.icerik,
+                          gorevTarih: gorev.tarih
+                        })}
+                      onLongPress={() => Alert.alert(
+                        "Lütfen bir eylem seçiniz.",
+                        "",
+                        [
                           {
-                            gorevId: gorev.id,
-                            gorevBaslik: gorev.baslik,
-                            gorevIcerik: gorev.icerik,
-                            gorevTarih: gorev.tarih
-                          })}
-                        onLongPress={() => Alert.alert(
-                          "Lütfen bir eylem seçiniz.",
-                          "",
-                          [
-                            {
-                              text: "Sil",
-                              onPress: () => {
-                                return Alert.alert(
-                                  "Görevi silmek üzeresiniz.",
-                                  "Görev silinsin mi?",
-                                  [
-                                    {
-                                      text: "Sil",
-                                      onPress: () => {
-                                        // post(`http://10.55.184.87:3001/gorev-sil/${gorev.id}`);
+                            text: "Sil",
+                            onPress: () => {
+                              return Alert.alert(
+                                "Görevi silmek üzeresiniz.",
+                                "Görev silinsin mi?",
+                                [
+                                  {
+                                    text: "Sil",
+                                    onPress: () => {
+                                      // post(`http://10.55.184.87:3001/gorev-sil/${gorev.id}`);
 
-                                      }
-                                    },
-                                    {
-                                      text: "İptal",
                                     }
-                                  ]
-                                )
-                              },
+                                  },
+                                  {
+                                    text: "İptal",
+                                  }
+                                ]
+                              )
                             },
-                            {
-                              text: "Düzenle",
-                              onPress: () => props.navigation.navigate('Görev Detayı',
-                                {
-                                  gorevId: gorev.id,
-                                  gorevBaslik: gorev.baslik,
-                                  gorevIcerik: gorev.icerik,
-                                })
-                            },
-                            {
-                              text: "İptal",
-                            }
-                          ]
-                        )} />
-                    </View>
-                  )
-                }
-              )
-            }
-          </View>
-        </SafeAreaView>
-      </ScrollView >
-    </ImageBackground>
+                          },
+                          {
+                            text: "Düzenle",
+                            onPress: () => props.navigation.navigate('Görev Detayı',
+                              {
+                                gorevId: gorev.id,
+                                gorevBaslik: gorev.baslik,
+                                gorevIcerik: gorev.icerik,
+                              })
+                          },
+                          {
+                            text: "İptal",
+                          }
+                        ]
+                      )} />
+                  </View>
+                )
+              }
+            )
+          }
+        </View>
+      </SafeAreaView>
+    </ScrollView >
   )
 }
 

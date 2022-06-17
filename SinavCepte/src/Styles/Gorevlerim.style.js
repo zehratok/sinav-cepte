@@ -3,6 +3,7 @@ export default StyleSheet.create({
     container: {
         display: 'flex',
         flex: 1,
+        backgroundColor: '#e8e4ec',
     },
     gorevlerim: {
         flex: 1,

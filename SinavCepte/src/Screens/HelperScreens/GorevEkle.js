@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity, ImageBackground, RefreshControl, Alert, ScrollView, TextInput, Platform } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import styles from '../../Styles/GorevEkle.style'
+import styles from '../../Styles/Gorev.style'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Formik } from 'formik'
 import usePost from '../../Hooks/usePost';
@@ -49,7 +49,7 @@ const GorevEkle = (props) => {
       return;
     }
     console.log(values);
-    post("http://10.55.184.87:3001/gorev-ekle", values);
+    post("http://192.168.43.215:3001/gorev-ekle", values);
 
   }
 
@@ -68,7 +68,7 @@ const GorevEkle = (props) => {
 
   return (
     <ImageBackground source={require('../../Resimler/drawerr.png')}
-      style={[styles.notEkle, { width: undefined, height: undefined }]}
+      style={[styles.gorevEkle, { width: undefined, height: undefined }]}
     >
       <ScrollView style={styles.container}
         refreshControl={
@@ -78,7 +78,7 @@ const GorevEkle = (props) => {
           />
         }
       >
-        <SafeAreaView style={styles.notEkle}>
+        <SafeAreaView style={styles.gorevEkle}>
           <Formik
             initialValues={{ kullanici_id: kullanici.id, baslik: '', icerik: '', tarih: date }}
             onSubmit={handleGorevEkle}
@@ -93,6 +93,7 @@ const GorevEkle = (props) => {
                       placeholder="Başlık giriniz..."
                       value={values.baslik}
                       onChangeText={handleChange('baslik')}
+                      multiline={true}
                     />
                   </View>
                   <View style={styles.icerik} >

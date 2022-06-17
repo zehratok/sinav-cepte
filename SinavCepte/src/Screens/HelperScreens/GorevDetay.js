@@ -1,6 +1,6 @@
 import { Alert, ImageBackground, RefreshControl, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import styles from '../../Styles/GorevDetay.styles'
+import styles from '../../Styles/Gorev.style'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Formik } from 'formik'
 import { useSelector } from 'react-redux'
@@ -119,6 +119,7 @@ const GorevDetay = (props) => {
                                             defaultValue={baslik}
                                             value={setBaslik}
                                             onChangeText={handleChange('baslik')}
+                                            multiline={true}
                                         />
                                     </View>
                                     <View style={styles.icerik} >

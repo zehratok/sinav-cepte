@@ -23,7 +23,7 @@ const Notlarim = (props) => {
   const [notlar, setNotlar] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://10.55.184.87:3001/notlarim/${kullanici.id}`).then((response) => {
+    axios.get(`http://192.168.43.215:3001/notlarim/${kullanici.id}`).then((response) => {
       setNotlar(response.data);
 
     });
@@ -74,7 +74,7 @@ const Notlarim = (props) => {
                                   {
                                     text: "Sil",
                                     onPress: () => {
-                                      // post(`http://10.55.184.87:3001/not-sil/${not.id}`);
+                                      axios.delete(`http://192.168.43.215:3001/notlarim/${not.id}`);
 
                                     }
                                   },

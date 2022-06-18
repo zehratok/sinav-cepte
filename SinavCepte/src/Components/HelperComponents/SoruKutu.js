@@ -69,8 +69,8 @@ const styles = StyleSheet.create({
         flex: 1,
         marginHorizontal: 20,
         borderRadius: 10,
-        backgroundColor: 'white',
-        marginBottom:20
+        backgroundColor: '#e8e4ec',
+        marginBottom: 20
     },
     soru: {
         borderRadius: 50
@@ -79,10 +79,11 @@ const styles = StyleSheet.create({
         marginHorizontal: 10,
         fontFamily: 'Ubuntu_700Bold',
         color: '#7a6790',
-        fontSize: 15
+        fontSize: 15,
+        marginVertical:5
     },
     footer: {
-        marginTop: 10,
+        marginTop: 5,
         flexDirection: 'row',
         justifyContent: 'space-between'
     },

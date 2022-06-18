@@ -3,6 +3,7 @@ export default StyleSheet.create({
     container: {
         display: 'flex',
         flex: 1,
+        backgroundColor: '#e8e4ec',
     },
     soruPaylasimi: {
         flex: 1,
@@ -18,11 +19,10 @@ export default StyleSheet.create({
         marginHorizontal: Dimensions.get('window').width / 50,
         marginVertical: Dimensions.get('window').height / 70,
         padding: Dimensions.get('window').width / 50,
-        borderTopLeftRadius: 50,
-        borderBottomRightRadius: 50,
-        borderBottomLeftRadius: 25,
-        borderTopRightRadius: 50,
+        borderRadius: 10,
+        borderBottomRightRadius: 0,
+        borderBottomLeftRadius: 0,
         borderWidth: 0,
-        backgroundColor: '#f4effa'
+        backgroundColor: '#dfcef0'
     },
 })

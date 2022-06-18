@@ -1,4 +1,4 @@
-import { ImageBackground, RefreshControl, Text, View } from 'react-native'
+import { ImageBackground, RefreshControl, View } from 'react-native'
 import React, { useState } from 'react';
 import styles from '../Styles/SoruPaylasimi.style';
 import DurumCubugu from '../Components/DurumCubugu';
@@ -16,40 +16,41 @@ const SoruPaylasim = (props) => {
         }, 10000)
     }
     return (
-        <ImageBackground source={require('../Resimler/drawer.png')}
-            style={[styles.soruPaylasimi, { width: undefined, height: undefined }]}
+
+        <ScrollView style={styles.container}
+            refreshControl={
+                <RefreshControl
+                    refreshing={refresh}
+                    onRefresh={() => pullMe}
+                />
+            }
         >
-            <ScrollView style={styles.container}
-                refreshControl={
-                    <RefreshControl
-                        refreshing={refresh}
-                        onRefresh={() => pullMe}
-                    />
-                }
+            <ImageBackground source={require('../Resimler/drawer.png')}
+                style={{ width: undefined, height: 85 }}
             >
                 <DurumCubugu />
                 <HeaderButon baslik="Soru Paylaşımı" icon='share' onPress={() => props.navigation.navigate("Soru Paylaş")} />
-                <SafeAreaView style={styles.soruPaylasimi}>
+            </ImageBackground>
+            <SafeAreaView style={styles.soruPaylasimi}>
                 <View style={styles.grup}>
-                        <View style={styles.kutu}>
-                            <Kutu to={{ screen: 'LGS Soru Paylaşımı' }} icon='FontAwesome' name='slideshare' baslik='          LGS          Soru Paylaşımı ' />
-                        </View>
-                        <View style={styles.kutu}>
-                            <Kutu to={{ screen: 'YKS Soru Paylaşımı' }} icon='FontAwesome' name='slideshare' baslik='          YKS          Soru Paylaşımı ' />
-                        </View>
+                    <View style={styles.kutu}>
+                        <Kutu to={{ screen: 'LGS Soru Paylaşımı' }} icon='FontAwesome' name='slideshare' baslik='          LGS          Soru Paylaşımı ' />
+                    </View>
+                    <View style={styles.kutu}>
+                        <Kutu to={{ screen: 'YKS Soru Paylaşımı' }} icon='FontAwesome' name='slideshare' baslik='          YKS          Soru Paylaşımı ' />
+                    </View>
 
+                </View>
+                <View style={styles.grup}>
+                    <View style={styles.kutu}>
+                        <Kutu to={{ screen: 'MSÜ Soru Paylaşımı' }} icon='FontAwesome' name='slideshare' baslik='          MSÜ          Soru Paylaşımı ' />
                     </View>
-                    <View style={styles.grup}>
-                        <View style={styles.kutu}>
-                            <Kutu to={{ screen: 'MSÜ Soru Paylaşımı' }} icon='FontAwesome' name='slideshare' baslik='          MSÜ          Soru Paylaşımı ' />
-                        </View>
-                        <View style={styles.kutu}>
-                            <Kutu to={{ screen: 'DGS Soru Paylaşımı' }} icon='FontAwesome' name='slideshare' baslik='          DGS          Soru Paylaşımı ' />
-                        </View>
+                    <View style={styles.kutu}>
+                        <Kutu to={{ screen: 'DGS Soru Paylaşımı' }} icon='FontAwesome' name='slideshare' baslik='          DGS          Soru Paylaşımı ' />
                     </View>
-                </SafeAreaView>
-            </ScrollView>
-        </ImageBackground>
+                </View>
+            </SafeAreaView>
+        </ScrollView>
     )
 }
 export default SoruPaylasim

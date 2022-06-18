@@ -17,7 +17,7 @@ const Gorevlerim = (props) => {
   const [gorevler, setGorevler] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://10.55.184.87:3001/gorevlerim/${kullanici.id}`).then((response) => {
+    axios.get(`http://192.168.43.215:3001/gorevlerim/${kullanici.id}`).then((response) => {
       setGorevler(response.data);
 
     });
@@ -80,8 +80,7 @@ const Gorevlerim = (props) => {
                                   {
                                     text: "Sil",
                                     onPress: () => {
-                                      // post(`http://10.55.184.87:3001/gorev-sil/${gorev.id}`);
-
+                                      axios.delete(`http://192.168.43.215:3001/gorevlerim/${gorev.id}`);
                                     }
                                   },
                                   {

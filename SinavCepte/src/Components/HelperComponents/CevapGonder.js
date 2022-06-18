@@ -1,23 +1,53 @@
-import { ActivityIndicator, Dimensions, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import { ActivityIndicator, Alert, Dimensions, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import { Formik } from 'formik'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { useSelector } from 'react-redux'
 import usePost from '../../Hooks/usePost'
+import * as ImagePicker from 'expo-image-picker';
 
 const CevapGonder = (props) => {
 
+    const [date, setDate] = useState(new Date());
     const kullanici = useSelector(s => s.data);
     const { data, loading, error, post } = usePost();
-    function handleCevapla(values) {
-
+    const [image, setImage] = useState('');
+    const pickImage = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing: true,
+            aspect: [3, 4],
+            quality: 1,
+        });
+        if (!result.cancelled) {
+            setImage(result.uri)
+            console.log(image);
+        }
     }
+    function handleCevapla(values) {
+        if (!values.icerik) {
+            Alert.alert("UYARI!", "Soruyu cevaplamak için içerik giriniz!");
+            return;
+        }
+        post("http://192.168.43.215:3001/cevapla", values);
+    }
+    useEffect(() => {
+        if (error || data == null) {
+            return;
+        }
+        if (data.mesaj == "Hata") {
+            Alert.alert('HATA!', 'Beklenmedik bir hata oluştu.');
+        }
+        if (data.mesaj == "Kayit işlemi başarılı") {
+            Alert.alert('Soruyu cevapladınız!');
+        }
+    }, [data])
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView>
                 <View style={styles.cevapla}>
                     <Formik
-                        initialValues={{ soru_id: props.soruId, kullanici_id: kullanici.id, kullanici_adi: kullanici.adSoyad, icerik: '', zaman: Date() }}
+                        initialValues={{ soru_id: props.soruId, kullanici_id: kullanici.id, kullanici_adi: kullanici.adSoyad, icerik: '', resim: image, tarih: date }}
                         onSubmit={handleCevapla}
                         enableReinitialize={true}
                     >
@@ -34,7 +64,9 @@ const CevapGonder = (props) => {
                                         />
                                     </View>
                                     <View style={styles.resim}>
-                                        <MaterialCommunityIcons name="image-plus" size={40} color="#be9fe1" />
+                                        <TouchableOpacity onPress={pickImage}>
+                                            <MaterialCommunityIcons name="image-plus" size={40} color="#be9fe1" />
+                                        </TouchableOpacity>
                                     </View>
                                 </View>
 
@@ -69,10 +101,10 @@ const styles = StyleSheet.create({
         minHeight: 50,
         maxHeight: (Dimensions.get('window').height / 2) - 10,
         backgroundColor: 'white',
-        width: (Dimensions.get('window').width / 2) +40,
+        width: (Dimensions.get('window').width / 2) + 40,
         marginBottom: 15,
         flexDirection: 'row',
-        justifyContent:'space-between'
+        justifyContent: 'space-between'
     },
     resim: {
         height: 50,
@@ -84,7 +116,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderRadius: 10,
         backgroundColor: '#5b4d6a',
-        height:40,
+        height: 40,
         marginBottom: 15,
     },
     textButon: {
@@ -102,8 +134,8 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontFamily: 'Ubuntu_500Medium_Italic',
         minHeight: 50,
-        minWidth:175,
-        maxWidth:175
+        minWidth: 175,
+        maxWidth: 175
 
     },
     formik: {

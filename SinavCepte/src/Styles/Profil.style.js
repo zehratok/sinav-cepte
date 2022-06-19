@@ -13,14 +13,12 @@ export default StyleSheet.create({
         height: Dimensions.get('window').height,
         width: Dimensions.get('window').width,
         paddingVertical: Dimensions.get('window').height / 3,
-        top: Dimensions.get('window').height / 5,
-        backgroundColor: 'white',
+        top: Dimensions.get('window').height / 4,
+        backgroundColor: '#e8e4ec',
         borderTopLeftRadius: 60,
         borderTopRightRadius: 60,
         bottom: 0,
-        left: -(Dimensions.get('window').width / 5),
-        borderRadius: 30,
-        position: 'absolute'
+        borderRadius: 10,
     },
     formContainer: {
         alignSelf: 'center',
@@ -33,21 +31,22 @@ export default StyleSheet.create({
     inputGrup: {
         alignSelf: 'center',
         flexDirection: 'row',
-        left: 20,
+        left: 50,
         top: 10,
     },
     icon: {
         alignSelf: 'center',
         padding: 12,
+        color: '#7a6790'
     },
-    input: {
+    yazi: {
         alignSelf: 'center',
         height: 45,
         width: 275,
         padding: 10,
-        fontSize: 17,
+        fontSize: 20,
         fontFamily: 'Ubuntu_400Regular',
-        color: 'grey',
+        color: '#7a6790'
     },
     profilResmi: {
         alignItems: 'center',
@@ -55,7 +54,8 @@ export default StyleSheet.create({
         height: (Dimensions.get('window').height / 3) + 2,
         borderRadius: 100,
         overflow: 'hidden',
-        top: Dimensions.get('window').height / 12,
+        top: -420,
+        left: 70
     },
     resim: {
         flex: 1,
@@ -64,16 +64,62 @@ export default StyleSheet.create({
         height: 100,
         position: 'absolute'
     },
-    ekle: {
-        backgroundColor: "#C9B6E4",
+    nokta1: {
+        backgroundColor: "#9c83b8",
         position: "absolute",
-        bottom: 35,
-        right: 50,
-        width: 40,
-        height: 40,
+        bottom: 670,
+        right: 260,
+        width: 6,
+        height: 6,
         borderRadius: 30,
-        alignItems: "center",
-        justifyContent: "center"
-    }
+
+    },
+    nokta2: {
+        backgroundColor: "#9c83b8",
+        position: "absolute",
+        bottom: 630,
+        right: 245,
+        width: 10,
+        height: 10,
+        borderRadius: 30,
+    },
+    nokta3: {
+        backgroundColor: "#dfcef0",
+        position: "absolute",
+        bottom: 700,
+        right: 125,
+        width: 5,
+        height: 5,
+        borderRadius: 30,
+
+    },
+    nokta4: {
+        backgroundColor: "#d4beeb",
+        position: "absolute",
+        bottom: 640,
+        right: 260,
+        width: 15,
+        height: 15,
+        borderRadius: 30,
+    },
+    nokta5: {
+        backgroundColor: "#9c83b8",
+        position: "absolute",
+        bottom: 680,
+        right: 120,
+        width: 15,
+        height: 15,
+        borderRadius: 30,
+    },
+    nokta6: {
+        backgroundColor: "#d4beeb",
+        position: "absolute",
+        bottom: 650,
+        right: 130,
+        width: 10,
+        height: 10,
+        borderRadius: 30,
+    },
+
 
 })

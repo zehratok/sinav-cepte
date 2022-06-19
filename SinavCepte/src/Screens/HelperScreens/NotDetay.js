@@ -4,7 +4,8 @@ import styles from '../../Styles/Not.styles'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Formik } from 'formik'
 import { useSelector } from 'react-redux'
-import usePost from '../../Hooks/usePost'
+import usePut from '../../Hooks/usePut'
+import axios from 'axios'
 
 
 const NotDetay = (props) => {
@@ -19,7 +20,7 @@ const NotDetay = (props) => {
     const { notId, notBaslik, notIcerik } = props.route.params;
     const [baslik, setBaslik] = useState(notBaslik);
     const [icerik, setIcerik] = useState(notIcerik);
-    const { data, loading, error, post } = usePost();
+    const { data, loading, error, put } = usePut();
     useEffect(() => {
         setBaslik(notBaslik);
         setIcerik(notIcerik);
@@ -41,18 +42,19 @@ const NotDetay = (props) => {
             values.icerik = icerik;
         }
 
-        post(`http://192.168.43.215:3001/not-guncelle/${notId}`, values);
-        console.log(values);
+        put(`http://192.168.43.215:3001/not-guncelle/${notId}`, values);
+        //  console.log(values);
 
     } useEffect(() => {
+        console.log(data);
         if (error || data == null) {
             return;
         }
         if (data.mesaj == "Hata") {
             Alert.alert('HATA', 'Beklenmedik bir hata oluştu.');
         }
-        if (data.mesaj == "Kayit işlemi başarılı") {
-            Alert.alert('Görev başarıyla kaydedildi.');
+        if (data.mesaj == "Güncelleme işlemi başarılı") {
+            Alert.alert('Not başarıyla güncellendi.');
             props.navigation.navigate('Notlarım');
         }
     }, [data])
@@ -71,7 +73,7 @@ const NotDetay = (props) => {
             >
                 <SafeAreaView style={styles.notDetay}>
                     <Formik
-                        initialValues={{ kullanici_id: kullanici.id, baslik: '', icerik: '' }}
+                        initialValues={{ id: notId, kullanici_id: kullanici.id, baslik: baslik, icerik: icerik }}
                         onSubmit={handleNotGuncelle}
                         enableReinitialize={true}
                     >
@@ -84,8 +86,8 @@ const NotDetay = (props) => {
                                             multiline={true}
                                             defaultValue={baslik}
                                             placeholder="Başlık eklemek için dokunun"
-                                            value={setBaslik}
-                                            onChangeText={handleChange('baslik')}
+                                            value={baslik}
+                                            onChangeText={setBaslik}
                                         />
 
                                     </View>
@@ -95,8 +97,8 @@ const NotDetay = (props) => {
                                             style={styles.icerikInput}
                                             defaultValue={icerik}
                                             placeholder="İçerik eklemek için dokunun"
-                                            value={setIcerik}
-                                            onChangeText={handleChange('icerik')}
+                                            value={icerik}
+                                            onChangeText={setIcerik}
                                         />
                                     </View>
                                 </View>

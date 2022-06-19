@@ -50,12 +50,12 @@ const Ayarlar = () => {
       Alert.alert('UYARI!', 'Bilgilerinizi güncellemek için mevcut parolanızı giriniz!');
       return;
     }
-    if (values.mevcutParola != veri.parola){
+    if (values.mevcutParola != veri.parola) {
       Alert.alert("UYARI!", "Mevcut parolanızı kontrol ediniz.");
       return;
     }
 
-      put(`http://192.168.43.215:3001/kullanici-guncelle/${id}`, values);
+    put(`http://192.168.43.215:3001/kullanici-guncelle/${id}`, values);
 
   }
   useEffect(() => {
@@ -130,7 +130,7 @@ const Ayarlar = () => {
                       <MaterialIcons name="vpn-key" size={22} style={styles.icon} />
                       <TextInput
                         style={styles.input}
-                        placeholder="Parola"
+                        placeholder={parola}
                         value={parola}
                         onChangeText={setParola}
                         secureTextEntry={true}
@@ -146,7 +146,6 @@ const Ayarlar = () => {
                         secureTextEntry={true}
                       />
                     </View>
-
                   </View>
                   <View style={styles.buton}>
                     <TouchableOpacity onPress={handleSubmit} loading={loading}>
@@ -162,7 +161,7 @@ const Ayarlar = () => {
               style={styles.resim} />
           </View>
           <View style={styles.ekle}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={pickImage}>
               <MaterialIcons name="add" size={30} color="white" style={{ fontWeight: "bold" }} />
             </TouchableOpacity>
           </View>

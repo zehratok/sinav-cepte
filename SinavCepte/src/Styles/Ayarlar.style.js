@@ -12,7 +12,7 @@ export default StyleSheet.create({
     },
     kutu: {
         alignSelf: 'center',
-        height: 500,
+        height: 375,
         width: Dimensions.get('window').width,
         top: Dimensions.get('window').height / 5,
         bottom: 0,
@@ -51,7 +51,7 @@ export default StyleSheet.create({
         height: (Dimensions.get('window').height / 3) + 2,
         borderRadius: 100,
         overflow: 'hidden',
-        top: -470,
+        top: -330,
         left: 40
     },
     resim: {
@@ -64,7 +64,7 @@ export default StyleSheet.create({
     ekle: {
         backgroundColor: "#7a6790",
         position: "absolute",
-        bottom: 565,
+        bottom: 425,
         right: 135,
         width: 40,
         height: 40,
@@ -91,7 +91,7 @@ export default StyleSheet.create({
     nokta1: {
         backgroundColor: "#9c83b8",
         position: "absolute",
-        bottom: 620,
+        bottom: 480,
         right: 258,
         width: 6,
         height: 6,
@@ -101,7 +101,7 @@ export default StyleSheet.create({
     nokta2: {
         backgroundColor: "#9c83b8",
         position: "absolute",
-        bottom: 580,
+        bottom: 440,
         right: 245,
         width: 10,
         height: 10,
@@ -110,7 +110,7 @@ export default StyleSheet.create({
     nokta3: {
         backgroundColor: "#dfcef0",
         position: "absolute",
-        bottom: 650,
+        bottom: 510,
         right: 120,
         width: 5,
         height: 5,
@@ -120,7 +120,7 @@ export default StyleSheet.create({
     nokta4: {
         backgroundColor: "#d4beeb",
         position: "absolute",
-        bottom: 590,
+        bottom: 450,
         right: 260,
         width: 15,
         height: 15,
@@ -129,7 +129,7 @@ export default StyleSheet.create({
     nokta5: {
         backgroundColor: "#9c83b8",
         position: "absolute",
-        bottom: 630,
+        bottom: 490,
         right: 110,
         width: 15,
         height: 15,
@@ -138,7 +138,7 @@ export default StyleSheet.create({
     nokta6: {
         backgroundColor: "#d4beeb",
         position: "absolute",
-        bottom: 600,
+        bottom: 460,
         right: 120,
         width: 10,
         height: 10,

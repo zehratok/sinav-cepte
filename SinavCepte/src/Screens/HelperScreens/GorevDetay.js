@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { Formik } from 'formik'
 import { useSelector } from 'react-redux'
 import DateTimePicker from '@react-native-community/datetimepicker'
-import usePost from '../../Hooks/usePost'
+import usePut from '../../Hooks/usePut'
 
 
 const GorevDetay = (props) => {
@@ -18,7 +18,7 @@ const GorevDetay = (props) => {
         }, 10000)
     }
     const { gorevId, gorevBaslik, gorevIcerik, gorevTarih } = props.route.params;
-    const { data, loading, error, post } = usePost();
+    const { data, loading, error, put } = usePut();
     const [baslik, setBaslik] = useState(gorevBaslik);
     const [icerik, setIcerik] = useState(gorevIcerik);
     const [date, setDate] = useState(new Date());
@@ -52,31 +52,8 @@ const GorevDetay = (props) => {
             Alert.alert("UYARI!", "Başlık ve içerik bilgisi boş bırakılamaz!");
             return;
         }
-        if (!values.baslik && !values.icerik && !values.tarih) {
-            values.baslik = baslik;
-            values.icerik = icerik;
-            values.tarih = gorevTarih;
-        }
-        if (!values.baslik && values.icerik && !values.tarih) {
-            values.baslik = baslik;
-            values.tarih = gorevTarih;
-        }
-        if (values.baslik && !values.icerik && !values.tarih) {
-            values.icerik = icerik;
-            values.tarih = gorevTarih;
-        }
-        if (values.baslik && !values.icerik && values.tarih) {
-            values.icerik = icerik;
-        }
-        if (!values.baslik && values.icerik && values.tarih) {
-            values.baslik = baslik;
-        }
-        if (!values.baslik && !values.icerik && values.tarih) {
-            values.icerik = icerik;
-            values.baslik = baslik;
-        }
 
-        // post(`http://10.55.184.87:3001/not-guncelle/${notId}`, values);
+        put(`http://192.168.43.215:3001/gorev-guncelle/${gorevId}`, values);
         console.log(values);
 
     } useEffect(() => {
@@ -86,9 +63,9 @@ const GorevDetay = (props) => {
         if (data.mesaj == "Hata") {
             Alert.alert('HATA', 'Beklenmedik bir hata oluştu.');
         }
-        if (data.mesaj == "Kayit işlemi başarılı") {
-            Alert.alert('Görev başarıyla kaydedildi.');
-            props.navigation.navigate('Notlarım');
+        if (data.mesaj == "Güncelleme işlemi başarılı") {
+            Alert.alert('Görev başarıyla güncellendi.');
+            props.navigation.navigate('Görevlerim');
         }
     }, [data])
     return (
@@ -105,7 +82,7 @@ const GorevDetay = (props) => {
             >
                 <SafeAreaView style={styles.gorevDetay}>
                     <Formik
-                        initialValues={{ kullanici_id: kullanici.id, baslik: '', icerik: '', tarih: date }}
+                        initialValues={{ kullanici_id: kullanici.id, baslik: baslik, icerik: icerik, tarih: date }}
                         onSubmit={handleGorevGuncelle}
                         enableReinitialize={true}
                     >
@@ -117,8 +94,8 @@ const GorevDetay = (props) => {
                                             style={styles.baslikInput}
                                             placeholder={gorevBaslik}
                                             defaultValue={baslik}
-                                            value={setBaslik}
-                                            onChangeText={handleChange('baslik')}
+                                            value={baslik}
+                                            onChangeText={setBaslik}
                                             multiline={true}
                                         />
                                     </View>
@@ -128,8 +105,8 @@ const GorevDetay = (props) => {
                                             style={styles.icerikInput}
                                             placeholder={gorevIcerik}
                                             defaultValue={icerik}
-                                            value={setIcerik}
-                                            onChangeText={handleChange('icerik')}
+                                            value={icerik}
+                                            onChangeText={setIcerik}
                                         />
                                     </View>
                                     <View>

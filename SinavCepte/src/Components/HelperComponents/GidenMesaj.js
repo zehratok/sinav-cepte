@@ -1,28 +1,27 @@
-import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Alert, Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import Font from '../Font'
 import { useSelector } from 'react-redux';
+import axios from 'axios';
 
 const GidenMesaj = (props) => {
     const kullanici = useSelector(s => s.data);
-    const id= props.id;
-    
-function handleMesajSil() {
-    
-}
+    const id = props.id;
+
+
     function mesaj() {
         if (id == kullanici.id) {
             return (
                 <TouchableOpacity style={styles.container}
-                    onPress={handleMesajSil}
                     onLongPress={props.onLongPress}>
+
                     <View>
                         <Text style={styles.icerik}> {props.icerik} </Text>
                     </View>
                     <View>
                         <Text style={styles.zaman}> {(props.zaman).slice(0, 5)} </Text>
                     </View>
-                </TouchableOpacity>
+                </TouchableOpacity >
             )
         }
     }
@@ -47,7 +46,7 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         borderBottomRightRadius: 0,
         marginHorizontal: 10,
-        alignSelf:'flex-end',
+        alignSelf: 'flex-end',
         marginVertical: 5,
         maxWidth: (Dimensions.get('window').width / 2) + 150,
         minWidth: (Dimensions.get('window').width / 5) + 15,
@@ -67,6 +66,6 @@ const styles = StyleSheet.create({
         fontFamily: 'Ubuntu_500Medium',
         marginBottom: 5,
         marginRight: 10,
-        alignSelf:'flex-end'
+        alignSelf: 'flex-end'
     },
 })

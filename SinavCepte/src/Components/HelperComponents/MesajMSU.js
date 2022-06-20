@@ -1,4 +1,4 @@
-import { FlatList, View } from 'react-native'
+import { Alert, FlatList, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import GidenMesaj from './GidenMesaj'
 import GelenMesaj from './GelenMesaj'
@@ -26,7 +26,38 @@ const MesajMSU = () => {
                     <GidenMesaj id={item.kullanici_id}
                         baslik={item.kullanici_adi}
                         icerik={item.icerik}
-                        zaman={item.zaman} />
+                        zaman={item.zaman}
+                        onLongPress={() => Alert.alert(
+                            "Lütfen bir eylem seçiniz.",
+                            "",
+                            [
+                                {
+                                    text: "Sil",
+                                    onPress: () => {
+                                        return Alert.alert(
+                                            "Mesajı silmek üzeresiniz.",
+                                            "Mesaj silinsin mi?",
+                                            [
+                                                {
+                                                    text: "Sil",
+                                                    onPress: () => {
+                                                        axios.delete(`http://192.168.43.215:3001/mesaj-msu/${item.id}`);
+
+                                                    }
+                                                },
+                                                {
+                                                    text: "İptal",
+                                                }
+                                            ]
+                                        )
+                                    },
+                                },
+                                {
+                                    text: "İptal",
+                                }
+                            ]
+                        )
+                        } />
                     <GelenMesaj id={item.kullanici_id}
                         baslik={item.kullanici_adi}
                         icerik={item.icerik}

@@ -41,7 +41,10 @@ const MenuKutu = (props) => {
                     {Icon()}
                 </Link>
                 <Link to={props.to} style={styles.baslik} >
-                    <Text style={styles.yazi}>{props.baslik}</Text>
+                    <View>
+                        <Text style={styles.yazi}>{props.baslik} </Text>
+                        <Text style={styles.yazi2}>{props.baslik2} </Text>
+                    </View>
                 </Link>
             </TouchableOpacity>
         </View>
@@ -58,20 +61,27 @@ const styles = StyleSheet.create({
         paddingVertical: Dimensions.get('window').height / 65,
     },
     icon: {
-        flex: 1,
         alignSelf: 'center',
-        marginTop: Dimensions.get('window').height / 35,
-        fontSize: Dimensions.get('window').width / 7,
+        fontSize:50,
         color: '#7a6790',
+        marginTop: 10,
+
     },
     baslik: {
         flex: 1,
         alignSelf: 'center',
-        marginTop: Dimensions.get('window').height / 70,
-        marginBottom: Dimensions.get('window').height / 35,
+        marginTop: 10,
+        marginBottom: 10,
     },
     yazi: {
-        flex:1,
+        flex: 1,
+        alignSelf: 'center',
+        fontSize: Dimensions.get('window').height / 40,
+        color: '#5b4d6a',
+        fontFamily: 'Ubuntu_700Bold_Italic',
+    },
+    yazi2: {
+        flex: 1,
         alignSelf: 'center',
         fontSize: Dimensions.get('window').height / 40,
         color: '#5b4d6a',

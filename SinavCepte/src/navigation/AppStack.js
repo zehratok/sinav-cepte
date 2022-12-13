@@ -24,6 +24,10 @@ import {
 } from '@expo-google-fonts/ubuntu';
 import SoruDetay from "../Screens/HelperScreens/SoruDetay";
 import ResimDetay from "../Screens/HelperScreens/ResimDetay";
+import HesaplaLGS from "../Screens/HelperScreens/HesaplaLGS";
+import HesaplaYKS from "../Screens/HelperScreens/HesaplaYKS";
+import HesaplaMSU from "../Screens/HelperScreens/HesaplaMSU";
+import HesaplaDGS from "../Screens/HelperScreens/HesaplaDGS";
 
 const Stack = createNativeStackNavigator();
 
@@ -67,6 +71,12 @@ const Baslangic = () => {
                 <Stack.Screen name="MSÜ Soru Paylaşımı" component={SoruMSU} />
                 <Stack.Screen name="Soru Detayı" component={SoruDetay} />
                 <Stack.Screen name="Resim Detayı" component={ResimDetay} />
+                <Stack.Screen name="LGS Puan Hesaplama" component={HesaplaLGS} />
+                <Stack.Screen name="YKS Puan Hesaplama" component={HesaplaYKS} />
+                <Stack.Screen name="MSÜ Puan Hesaplama" component={HesaplaMSU} />
+                <Stack.Screen name="DGS Puan Hesaplama" component={HesaplaDGS} />
+
+
 
             </Stack.Group>
 

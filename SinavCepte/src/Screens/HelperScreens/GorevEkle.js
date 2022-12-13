@@ -49,7 +49,7 @@ const GorevEkle = (props) => {
       return;
     }
     console.log(values);
-    post("http://192.168.43.215:3001/gorev-ekle", values);
+    post("https://b4de-149-140-154-149.eu.ngrok.io/gorev-ekle", values);
 
   }
 

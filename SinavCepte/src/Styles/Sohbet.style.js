@@ -3,6 +3,7 @@ export default StyleSheet.create({
     container: {
         display: 'flex',
         flex: 1,
+        backgroundColor: '#e8e4ec',
     },
     sohbet: {
         flex: 1,
@@ -23,7 +24,7 @@ export default StyleSheet.create({
         borderBottomLeftRadius: 25,
         borderTopRightRadius: 50,
         borderWidth: 0,
-        backgroundColor: '#f4effa'
+        backgroundColor: '#dfcef0'
     },
 
 })

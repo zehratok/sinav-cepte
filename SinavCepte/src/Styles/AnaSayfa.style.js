@@ -19,29 +19,29 @@ export default StyleSheet.create({
         borderBottomRightRadius: 10,
         borderBottomLeftRadius: 50,
         borderTopRightRadius: 50,
-        backgroundColor: '#d4beeb'
+        backgroundColor: '#eadef5',
+        borderColor: '#dfcef0',
+        borderWidth: 0.8
     },
     grup: {
         flex: 1,
         flexDirection: 'row',
         marginHorizontal: 7,
-
-
     },
     kutu: {
         flex: 1,
         alignItems: 'center',
-        marginVertical:10,
+        marginVertical: 10,
         marginHorizontal: 8,
         padding: Dimensions.get('window').width / 70,
         borderTopLeftRadius: 10,
         borderBottomRightRadius: 10,
         borderBottomLeftRadius: 50,
         borderTopRightRadius: 50,
-        backgroundColor: '#d4beeb'
-
+        backgroundColor: '#eadef5',
+        borderColor: '#dfcef0',
+        borderWidth: 0.8
     },
-
     kutu3: {
         backgroundColor: '#C9B6E4',
         flex: 1,

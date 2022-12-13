@@ -1,10 +1,11 @@
-import { RefreshControl, Text } from 'react-native'
+import { ImageBackground, RefreshControl, View } from 'react-native'
 import React, { useState } from 'react';
 import styles from '../Styles/Konular.style';
 import DurumCubugu from '../Components/DurumCubugu';
 import { ScrollView } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from '../Components/Headers/Header';
+import Kutu from '../Components/HelperComponents/MenuKutu';
 
 const Konular = () => {
   const [refresh, setRefresh] = useState(false);
@@ -23,10 +24,30 @@ const Konular = () => {
         />
       }
     >
-      <DurumCubugu />
-      <Header baslik="Konular" />
-      <SafeAreaView style={styles.deneme}>
-        <Text style={styles.baslik}>Konular  </Text>
+      <ImageBackground source={require('../Resimler/drawer.png')}
+        style={{ width: undefined, height: 85 }}
+      >
+        <DurumCubugu />
+        <Header baslik="Konular" />
+      </ImageBackground>
+      <SafeAreaView style={styles.konular}>
+        <View style={styles.grup}>
+          <View style={styles.kutu}>
+            <Kutu to={{ screen: 'Konular' }} icon='Entypo' name='open-book' baslik='LGS' baslik2='Konu Takibi' />
+          </View>
+          <View style={styles.kutu}>
+            <Kutu to={{ screen: 'Konular' }} icon='Entypo' name='open-book' baslik='YKS' baslik2='Konu Takibi' />
+          </View>
+
+        </View>
+        <View style={styles.grup}>
+          <View style={styles.kutu}>
+            <Kutu to={{ screen: 'Konular' }} icon='Entypo' name='open-book' baslik='MSÜ' baslik2='Konu Takibi' />
+          </View>
+          <View style={styles.kutu}>
+            <Kutu to={{ screen: 'Konular' }} icon='Entypo' name='open-book' baslik='DGS' baslik2='Konu Takibi' />
+          </View>
+        </View>
       </SafeAreaView>
     </ScrollView>
   )

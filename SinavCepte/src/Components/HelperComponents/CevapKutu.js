@@ -48,7 +48,7 @@ export default CevapKutu
 const styles = StyleSheet.create({
     container: {
         margin: 5,
-        maxWidth: 295
+        maxWidth: 295,
 
     },
     grup: {
@@ -71,7 +71,8 @@ const styles = StyleSheet.create({
         color: '#9c83b8',
         fontSize: 12,
         maxWidth: 230,
-        minWidth: 220
+        minWidth: 220,
+        maxHeight:250
     },
     tarih: {
         marginTop: 10,

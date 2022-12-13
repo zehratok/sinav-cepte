@@ -16,40 +16,41 @@ const Sohbet = () => {
         }, 10000)
     }
     return (
-        <ImageBackground source={require('../Resimler/drawer.png')}
-            style={[styles.sohbet, { width: undefined, height: undefined }]}
+
+        <ScrollView style={styles.container}
+            refreshControl={
+                <RefreshControl
+                    refreshing={refresh}
+                    onRefresh={() => pullMe}
+                />
+            }
         >
-            <ScrollView style={styles.container}
-                refreshControl={
-                    <RefreshControl
-                        refreshing={refresh}
-                        onRefresh={() => pullMe}
-                    />
-                }
+            <ImageBackground source={require('../Resimler/drawer.png')}
+                style={{ width: undefined, height: 85 }}
             >
                 <DurumCubugu />
                 <Header baslik="Sohbet" />
-                <SafeAreaView style={styles.sohbet}>
-                    <View style={styles.grup}>
-                        <View style={styles.kutu}>
-                            <Kutu to={{ screen: 'LGS Sohbet' }} icon='FontAwesome' name='group' baslik=' LGS Sohbet ' />
-                        </View>
-                        <View style={styles.kutu}>
-                            <Kutu to={{ screen: 'YKS Sohbet' }} icon='Entypo' name='chat' baslik=' YKS Sohbet ' />
-                        </View>
+            </ImageBackground>
+            <SafeAreaView style={styles.sohbet}>
+                <View style={styles.grup}>
+                    <View style={styles.kutu}>
+                        <Kutu to={{ screen: 'LGS Sohbet' }} icon='FontAwesome' name='group' baslik=' LGS Sohbet ' />
+                    </View>
+                    <View style={styles.kutu}>
+                        <Kutu to={{ screen: 'YKS Sohbet' }} icon='Entypo' name='chat' baslik=' YKS Sohbet ' />
+                    </View>
 
+                </View>
+                <View style={styles.grup}>
+                    <View style={styles.kutu}>
+                        <Kutu to={{ screen: 'MSÜ Sohbet' }} icon='FontAwesome5' name='envelope-open-text' baslik=' MSÜ Sohbet ' />
                     </View>
-                    <View style={styles.grup}>
-                        <View style={styles.kutu}>
-                            <Kutu to={{ screen: 'MSÜ Sohbet' }} icon='FontAwesome5' name='envelope-open-text' baslik=' MSÜ Sohbet ' />
-                        </View>
-                        <View style={styles.kutu}>
-                            <Kutu to={{ screen: 'DGS Sohbet' }} icon='MaterialCommunity' name='thought-bubble' baslik=' DGS Sohbet ' />
-                        </View>
+                    <View style={styles.kutu}>
+                        <Kutu to={{ screen: 'DGS Sohbet' }} icon='MaterialCommunity' name='thought-bubble' baslik=' DGS Sohbet ' />
                     </View>
-                </SafeAreaView>
-            </ScrollView>
-        </ImageBackground>
+                </View>
+            </SafeAreaView>
+        </ScrollView>
     )
 }
 

@@ -55,7 +55,7 @@ const Ayarlar = () => {
       return;
     }
 
-    put(`http://192.168.43.215:3001/kullanici-guncelle/${id}`, values);
+    put(`https://b4de-149-140-154-149.eu.ngrok.io/kullanici-guncelle/${id}`, values);
 
   }
   useEffect(() => {

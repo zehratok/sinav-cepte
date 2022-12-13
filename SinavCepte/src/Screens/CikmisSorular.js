@@ -1,10 +1,11 @@
-import { RefreshControl, Text } from 'react-native'
+import { ImageBackground, RefreshControl, View } from 'react-native'
 import React, { useState } from 'react';
 import styles from '../Styles/CikmisSorular.style';
 import DurumCubugu from '../Components/DurumCubugu';
 import { ScrollView } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from '../Components/Headers/Header';
+import Kutu from '../Components/HelperComponents/MenuKutu';
 
 const CikmisSorular = () => {
   const [refresh, setRefresh] = useState(false);
@@ -23,10 +24,30 @@ const CikmisSorular = () => {
         />
       }
     >
-      <DurumCubugu />
-      <Header baslik="Çıkmış Sorular" />
+      <ImageBackground source={require('../Resimler/drawer.png')}
+        style={{ width: undefined, height: 85 }}
+      >
+        <DurumCubugu />
+        <Header baslik="Çıkmış Sorular" />
+      </ImageBackground>
       <SafeAreaView style={styles.deneme}>
-        <Text style={styles.baslik}>Çıkmış Sorular  </Text>
+        <View style={styles.grup}>
+          <View style={styles.kutu}>
+            <Kutu to={{ screen: 'Çıkmış Sorular' }} icon='FontAwesome5' name='spell-check' baslik2='LGS' />
+          </View>
+          <View style={styles.kutu}>
+            <Kutu to={{ screen: 'Çıkmış Sorular' }} icon='FontAwesome5' name='spell-check' baslik2='YKS' />
+          </View>
+
+        </View>
+        <View style={styles.grup}>
+          <View style={styles.kutu}>
+            <Kutu to={{ screen: 'Çıkmış Sorular' }} icon='FontAwesome5' name='spell-check' baslik2='MSÜ' />
+          </View>
+          <View style={styles.kutu}>
+            <Kutu to={{ screen: 'Çıkmış Sorular' }} icon='FontAwesome5' name='spell-check' baslik2='DGS' />
+          </View>
+        </View>
       </SafeAreaView>
     </ScrollView>
   )

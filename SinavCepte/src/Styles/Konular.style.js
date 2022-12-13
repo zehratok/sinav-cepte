@@ -6,7 +6,7 @@ export default StyleSheet.create({
         backgroundColor:'white'
 
     },
-    deneme:{
+    konular:{
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
@@ -17,4 +17,22 @@ export default StyleSheet.create({
         fontWeight: 'bold',
         color: '#BE9FE1',
     },
+    grup: {
+        flex: 1,
+        flexDirection: 'row',
+        marginHorizontal: 10,
+    },
+    kutu: {
+        flex: 1,
+        alignItems: 'center',
+        marginHorizontal: Dimensions.get('window').width / 50,
+        marginVertical: Dimensions.get('window').height / 70,
+        padding: Dimensions.get('window').width / 50,
+        borderRadius: 10,
+        borderBottomRightRadius: 0,
+        borderBottomLeftRadius: 0,
+        borderWidth: 0,
+        backgroundColor: '#dfcef0'
+    },
+
 })

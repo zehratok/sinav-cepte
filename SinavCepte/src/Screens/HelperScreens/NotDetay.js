@@ -31,18 +31,8 @@ const NotDetay = (props) => {
             Alert.alert("UYARI!", "Başlık ve içerik bilgisi boş bırakılamaz!");
             return;
         }
-        if (!values.baslik && !values.icerik) {
-            values.baslik = baslik;
-            values.icerik = icerik;
-        }
-        if (!values.baslik && values.icerik) {
-            values.baslik = baslik;
-        }
-        if (values.baslik && !values.icerik) {
-            values.icerik = icerik;
-        }
-
-        put(`http://192.168.43.215:3001/not-guncelle/${notId}`, values);
+       
+        put(`https://b4de-149-140-154-149.eu.ngrok.io/not-guncelle/${notId}`, values);
         //  console.log(values);
 
     } useEffect(() => {

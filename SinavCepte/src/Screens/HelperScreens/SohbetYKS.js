@@ -17,7 +17,7 @@ const SohbetYKS = () => {
         }
         values.zaman = (values.zaman).slice(16, 24);
         // console.log(values.zaman);
-        post("http://192.168.43.215:3001/mesaj-yks", values);
+        post("https://b4de-149-140-154-149.eu.ngrok.io/mesaj-yks", values);
     }
     useEffect(() => {
         if (error || data == null) {

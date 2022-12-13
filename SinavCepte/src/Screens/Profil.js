@@ -16,7 +16,7 @@ const Profil = () => {
     const [profil, setProfil] = useState([]);
 
     useEffect(() => {
-        axios.get(`http://192.168.43.215:3001/kullanicilar/${id}`).then((response) => {
+        axios.get(`https://b4de-149-140-154-149.eu.ngrok.io/kullanicilar/${id}`).then((response) => {
             setProfil(response.data);
 
         });

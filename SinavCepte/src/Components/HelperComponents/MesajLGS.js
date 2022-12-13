@@ -7,7 +7,7 @@ import axios from 'axios'
 const MesajLGS = () => {
     const [mesajlar, setMesajlar] = useState([]);
     useEffect(() => {
-        axios.get('http://192.168.43.215:3001/sohbet-lgs').then((response) => {
+        axios.get('https://b4de-149-140-154-149.eu.ngrok.io/sohbet-lgs').then((response) => {
             setMesajlar(response.data);
         });
     });
@@ -41,7 +41,7 @@ const MesajLGS = () => {
                                                 {
                                                     text: "Sil",
                                                     onPress: () => {
-                                                        axios.delete(`http://192.168.43.215:3001/mesaj-lgs/${item.id}`);
+                                                        axios.delete(`https://b4de-149-140-154-149.eu.ngrok.io/mesaj-lgs/${item.id}`);
 
                                                     }
                                                 },

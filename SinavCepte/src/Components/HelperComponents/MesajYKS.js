@@ -7,7 +7,7 @@ import axios from 'axios'
 const MesajYKS = () => {
     const [mesajlar, setMesajlar] = useState([]);
     useEffect(() => {
-        axios.get('http://192.168.43.215:3001/sohbet-yks').then((response) => {
+        axios.get('https://b4de-149-140-154-149.eu.ngrok.io/sohbet-yks').then((response) => {
             setMesajlar(response.data);
         });
     });
@@ -41,7 +41,7 @@ const MesajYKS = () => {
                                                 {
                                                     text: "Sil",
                                                     onPress: () => {
-                                                        axios.delete(`http://192.168.43.215:3001/mesaj-yks/${item.id}`);
+                                                        axios.delete(`https://b4de-149-140-154-149.eu.ngrok.io/mesaj-yks/${item.id}`);
 
                                                     }
                                                 },

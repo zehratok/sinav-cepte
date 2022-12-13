@@ -53,7 +53,7 @@ const GorevDetay = (props) => {
             return;
         }
 
-        put(`http://192.168.43.215:3001/gorev-guncelle/${gorevId}`, values);
+        put(`https://b4de-149-140-154-149.eu.ngrok.io/gorev-guncelle/${gorevId}`, values);
         console.log(values);
 
     } useEffect(() => {

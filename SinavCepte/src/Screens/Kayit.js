@@ -33,7 +33,7 @@ const Kayit = (props) => {
             Alert.alert("HATA!", "Parolayı kontrol ediniz.");
             return;
         }
-        post("http://192.168.1.34:3001/kaydol", values);
+        post("https://b4de-149-140-154-149.eu.ngrok.io/kaydol", values);
 
 
     }

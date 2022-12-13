@@ -24,7 +24,7 @@ const Giris = () => {
             Alert.alert("HATA!", "Parola alanı boş bırakılamaz!");
             return;
         }
-        post("http://192.168.1.34:3001/giris-yap", values);
+        post("https://b4de-149-140-154-149.eu.ngrok.io/giris-yap", values);
     }
     useEffect(() => {
         console.log(data);

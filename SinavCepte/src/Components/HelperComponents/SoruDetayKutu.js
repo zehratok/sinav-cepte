@@ -40,8 +40,8 @@ const SoruDetayKutu = (props) => {
             <TouchableOpacity onPress={props.onPress}>
                 <Image
                     style={{
-                        width: 350,
-                        height: 400, 
+                        width: 340,
+                        height: 370, 
                         alignSelf: 'center',
                         justifyContent: 'center',
                         marginTop: 10,
@@ -54,7 +54,7 @@ const SoruDetayKutu = (props) => {
             <View>
                 <Text style={styles.baslik}>{props.soruBaslik}</Text>
             </View>
-            <ScrollView style={{ maxHeight: 50 }}>
+            <ScrollView style={{ maxHeight: 250 }}>
                 <Text style={styles.aciklama}>{props.soruAciklama}</Text>
             </ScrollView>
         </View>
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
         marginLeft: 20,
         fontFamily: 'Ubuntu_400Regular_Italic',
         color: '#9c83b8',
-        fontSize: 12
+        fontSize: 12,
     },
     ders: {
         marginHorizontal: 10,

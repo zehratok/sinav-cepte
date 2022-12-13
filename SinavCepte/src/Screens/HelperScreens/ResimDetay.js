@@ -5,23 +5,33 @@ import base64 from 'react-native-base64';
 const ResimDetay = (props) => {
     const { resim } = props.route.params;
 
-    const res = base64.encodeFromByteArray(resim, Uint8Array) ;
+    const res = base64.encodeFromByteArray(resim, Uint8Array);
 
     return (
         <ScrollView style={{
             flex: 1,
             display: 'flex',
         }}>
-            <Image
-                style={{
-                    width: Dimensions.get('window').width,
-                    height: (Dimensions.get('window').height) - 50,
-                    alignSelf: 'center',
-                    justifyContent: 'center',
-                }}
-                source={{
-                    uri: `data:image/png;base64, ${res}`
-                }} />
+            <View style={{
+                marginTop:50,
+                flex:1,
+                alignSelf:'center',
+                alignItems: 'center',
+                width: 400,
+                height: 500,
+                overflow: 'hidden',
+            }}>
+                <Image
+                    style={{
+                        flex: 1,
+                        width: 400,
+                        height: 500,
+                        position: 'absolute'
+                    }}
+                    source={{
+                        uri: `data:image/png;base64, ${res}`
+                    }} />
+            </View>
         </ScrollView>
     )
 }

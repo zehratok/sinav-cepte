@@ -23,7 +23,7 @@ const NotEkle = (props) => {
         }
         console.log(values);
 
-        post("http://192.168.43.215:3001/not-ekle", values);
+        post("https://b4de-149-140-154-149.eu.ngrok.io/not-ekle", values);
     }
 
     useEffect(() => {

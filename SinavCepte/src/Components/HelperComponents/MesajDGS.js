@@ -7,7 +7,11 @@ import axios from 'axios'
 const MesajDGS = () => {
     const [mesajlar, setMesajlar] = useState([]);
     useEffect(() => {
-        axios.get('http://192.168.43.215:3001/sohbet-dgs').then((response) => {
+        axios.get('https://b4de-149-140-154-149.eu.ngrok.io/sohbet-dgs',{
+            headers:{
+              "ngrok-skip-browser-warning": "farkmaz"
+            }
+          }).then((response) => {
             setMesajlar(response.data);
         });
     });
@@ -41,7 +45,7 @@ const MesajDGS = () => {
                                                 {
                                                     text: "Sil",
                                                     onPress: () => {
-                                                        axios.delete(`http://192.168.43.215:3001/mesaj-dgs/${item.id}`);
+                                                        axios.delete(`https://b4de-149-140-154-149.eu.ngrok.io/mesaj-dgs/${item.id}`);
 
                                                     }
                                                 },

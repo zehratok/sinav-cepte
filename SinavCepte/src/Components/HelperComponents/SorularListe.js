@@ -12,7 +12,7 @@ const SorularListe = (props) => {
     const [ders, setDers] = useState(null);
     useEffect(() => {
         if (icerik == null) {
-            axios.get(`http://192.168.43.215:3001/sorular/${sinav}`).then((response) => {
+            axios.get(`https://b4de-149-140-154-149.eu.ngrok.io/sorular/${sinav}`).then((response) => {
                 setSorular(response.data);
             });
         }
@@ -32,7 +32,7 @@ const SorularListe = (props) => {
             else if (icerik == 'Türkçe' || icerik == 'türkçe' || icerik == 'TÜRKÇE') {
                 setDers('4');
             }
-            axios.get(`http://192.168.43.215:3001/sorular/${sinav}/${ders}`).then((response) => {
+            axios.get(`https://b4de-149-140-154-149.eu.ngrok.io/sorular/${sinav}/${ders}`).then((response) => {
                 setSorular(response.data);
             });
         }

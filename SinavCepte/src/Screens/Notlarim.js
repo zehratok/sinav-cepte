@@ -23,13 +23,18 @@ const Notlarim = (props) => {
   const [notlar, setNotlar] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://192.168.43.215:3001/notlarim/${kullanici.id}`).then((response) => {
+    axios.get(`https://b4de-149-140-154-149.eu.ngrok.io/notlarim/${kullanici.id}`).then((response) => {
       setNotlar(response.data);
 
     });
     // console.log(notlar);
   });
-
+  // useEffect(() => {
+  //   return () => {
+  //     setNotlar(null);
+  //     console.log("Bellek temizlendi.");
+  //   }
+  // }, []);
   return (
 
     <ScrollView style={styles.container}
@@ -74,7 +79,7 @@ const Notlarim = (props) => {
                                   {
                                     text: "Sil",
                                     onPress: () => {
-                                      axios.delete(`http://192.168.43.215:3001/notlarim/${not.id}`);
+                                      axios.delete(`https://b4de-149-140-154-149.eu.ngrok.io/notlarim/${not.id}`);
 
                                     }
                                   },

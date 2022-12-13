@@ -71,7 +71,7 @@ const SoruEkle = (props) => {
         }
         console.log(values);
 
-        post("http://192.168.43.215:3001/soru-paylas", values);
+        post("https://b4de-149-140-154-149.eu.ngrok.io/soru-paylas", values);
     }
 
     useEffect(() => {

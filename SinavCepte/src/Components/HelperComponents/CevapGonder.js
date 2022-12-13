@@ -29,7 +29,7 @@ const CevapGonder = (props) => {
             Alert.alert("UYARI!", "Soruyu cevaplamak için içerik giriniz!");
             return;
         }
-        post("http://192.168.43.215:3001/cevapla", values);
+        post("https://b4de-149-140-154-149.eu.ngrok.io/cevapla", values);
     }
     useEffect(() => {
         if (error || data == null) {
